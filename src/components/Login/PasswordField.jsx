@@ -2,7 +2,7 @@ import { FormControl, FormLabel, IconButton, Input, InputGroup, InputRightElemen
 import { forwardRef, useRef } from "react";
 import { HiEye, HiEyeOff } from "react-icons/hi";
 
-export const PasswordField = forwardRef((props, ref) => {
+const PasswordField = forwardRef((props, ref) => {
     const { isOpen, onToggle } = useDisclosure();
     const inputRef = useRef(null);
     const mergeRef = useMergeRefs(inputRef, ref);
@@ -26,4 +26,7 @@ export const PasswordField = forwardRef((props, ref) => {
         </FormControl>
     );
 });
+
 PasswordField.displayName = "PasswordField";
+
+export default PasswordField;
