@@ -1,6 +1,5 @@
 import { Box, Button, Checkbox, Container, Divider, FormControl, FormLabel, Heading, HStack, Input, Link, Stack, Text } from "@chakra-ui/react";
 import PasswordField from "./PasswordField";
-import Logo from "./Logo";
 
 const Login = () => (
     <Container
@@ -16,7 +15,6 @@ const Login = () => (
     >
         <Stack spacing="8">
             <Stack spacing="6">
-                <Logo />
                 <Stack
                     spacing={{
                         base: "2",
@@ -30,10 +28,10 @@ const Login = () => (
                             md: "sm",
                         }}
                     >
-                        Log in to your account
+                        Inicia sesión en Arcade
                     </Heading>
                     <Text color="fg.muted">
-                        Don't have an account? <Link href="#">Sign up</Link>
+                        Aún no tienes cuenta? <Link href="#">Regístrate</Link>
                     </Text>
                 </Stack>
             </Stack>
@@ -68,13 +66,10 @@ const Login = () => (
                         <PasswordField />
                     </Stack>
                     <HStack justify="space-between">
-                        <Checkbox defaultChecked>Remember me</Checkbox>
-                        <Button variant="text" size="sm">
-                            Forgot password?
-                        </Button>
+                        <Checkbox defaultChecked>Recordarme</Checkbox>
                     </HStack>
                     <Stack spacing="6">
-                        <Button>Sign in</Button>
+                        <Button>Iniciar sesión</Button>
                     </Stack>
                 </Stack>
             </Box>
