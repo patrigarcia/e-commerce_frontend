@@ -1,15 +1,35 @@
-.link{
-    margin: 10px;
-}
-.carrito{
-    margin: 10px;
-    padding-right: 10px;
-}
+
 
 .navbar{
-    padding:10px;
     font-family: 'Nunito Sans', sans-serif;
     font-size: 1em;
     box-shadow: 0px 12px 15px rgba(251, 0, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+
+    .link {
+      margin: 0 1rem; 
+    }
+
+    .link_user {
+      margin-right: auto;
+      padding-left: 2rem;
+    }
    
-}
+    a.carrito{
+      padding-left: 3rem;
+      margin-right: 3rem;
+    }
+
+    button, .logo{
+      margin: 10px;
+    }
+    
+   
+  
+
+  }
+  
+  

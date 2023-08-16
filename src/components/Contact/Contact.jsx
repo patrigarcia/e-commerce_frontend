@@ -13,25 +13,25 @@ const Contact = () => {
     return (
         <div className="containerD">
             <h1 className="title">Contacto</h1>
-            <Card className="formCard" maxW="md" mx="auto" mt={8} backgroundColor="#EFEFEF">
+            <Card className="formCard" maxW="md" mx="auto" mt={8}>
                 <CardBody>
                     <form onSubmit={handleSubmit}>
                         <VStack spacing={4} align="stretch">
                             <FormControl id="name">
                                 <FormLabel>Nombre</FormLabel>
-                                <Input type="text" name="name" required backgroundColor="white" />
+                                <Input type="text" name="name" />
                             </FormControl>
                             <FormControl id="email">
                                 <FormLabel>Email</FormLabel>
-                                <Input type="email" name="email" required backgroundColor="white" />
+                                <Input type="email" name="email" />
                             </FormControl>
                             <FormControl id="phone">
                                 <FormLabel>Teléfono</FormLabel>
-                                <Input type="tel" name="phone" backgroundColor="white" />
+                                <Input type="tel" name="phone" />
                             </FormControl>
                             <FormControl id="message">
                                 <FormLabel>Mensaje</FormLabel>
-                                <Textarea name="message" required backgroundColor="white" />
+                                <Textarea name="message" required />
                             </FormControl>
                             <Button type="submit" colorScheme="blue">
                                 Enviar Mensaje
