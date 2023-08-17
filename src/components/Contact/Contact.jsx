@@ -1,6 +1,6 @@
 import React from "react";
 import "./Contact.scss";
-import { FormControl, FormLabel, Input, Textarea, Button, VStack, useToast, Card, CardBody } from "@chakra-ui/react";
+import { FormControl, FormLabel, Input, Textarea, Button, VStack, useToast, Card, CardBody, Center } from "@chakra-ui/react";
 
 const Contact = () => {
     const toast = useToast();
@@ -13,6 +13,13 @@ const Contact = () => {
     return (
         <div className="containerD">
             <h1 className="title">Contacto</h1>
+            <Center mt={4} style={{ textAlign: "center" }}>
+                <h5>
+                    Dejanos un mensaje, un representante
+                    <br /> te va a contactar muy pronto!
+                </h5>
+            </Center>
+
             <Card className="formCard" maxW="md" mx="auto" mt={8}>
                 <CardBody>
                     <form onSubmit={handleSubmit}>
@@ -33,7 +40,7 @@ const Contact = () => {
                                 <FormLabel>Mensaje</FormLabel>
                                 <Textarea name="message" required />
                             </FormControl>
-                            <Button type="submit" colorScheme="blue">
+                            <Button type="submit" colorScheme="purple">
                                 Enviar Mensaje
                             </Button>
                         </VStack>
