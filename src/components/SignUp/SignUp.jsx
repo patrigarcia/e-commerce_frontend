@@ -36,9 +36,7 @@ const SignUp = () => {
         <div className="containerD">
             <h1 className="title">Registrate</h1>
             <Center mt={4} style={{ textAlign: "center" }}>
-                <h5>
-                   Crea tu cuenta para poder inciar sesión!
-                </h5>
+                <h5>Crea tu cuenta para poder inciar sesión!</h5>
             </Center>
 
             <Card className="formCard" maxW="md" mx="auto" mt={8}>

@@ -1,64 +1,41 @@
-import axios from "axios";
 import { createContext, useReducer } from "react";
-import UserReducer from "./UserReducer";
+import userReducer from "./UserReducer";
+import apiClient from "../../api/apiClient";
 
-const token = JSON.parse(localStorage.getItem("token"));
+const token = localStorage.getItem("token");
 
 const initialState = {
     token: token ? token : null,
     user: null,
 };
 
-const API_URL = "http://localhost:9000";
-
 export const UserContext = createContext(initialState);
 
 export const UserProvider = ({ children }) => {
-    const [state, dispatch] = useReducer(UserReducer, initialState);
+    const [state, dispatch] = useReducer(userReducer, initialState);
 
     const login = async (user) => {
-        const res = await axios.post(API_URL + "/users/login", user);
-        //guardamos token en el estado
+        const res = await apiClient.post("/users/login", user);
+
         dispatch({
             type: "LOGIN",
             payload: res.data,
         });
+
         if (res.data) {
-            //guardamos token en el localStorage
-            localStorage.setItem("token", JSON.stringify(res.data.token));
+            localStorage.setItem("token", res.data.token);
         }
     };
 
-    const getUserInfo = async () => {
-        const token = JSON.parse(localStorage.getItem("token"));
-        const res = await axios.get(
-            API_URL + "/users/all", //*chequear que la ruta sea la misma que en el back
-            {
-                headers: {
-                    authorization: token,
-                },
-            }
-        );
-        dispatch({
-            type: "GET_USER_INFO",
-            payload: res.data,
-        });
-    };
-
     const logout = async () => {
-        const token = JSON.parse(localStorage.getItem("token"));
-        const res = await axios.delete(API_URL + "/users/logout", {
-            headers: {
-                authorization: token,
-            },
-        });
+        const res = await apiClient.delete("/users/logout");
+
         dispatch({
-            //vaciamos el estado
             type: "LOGOUT",
             payload: res.data,
         });
+
         if (res.data) {
-            //borramos el token del localStorage
             localStorage.removeItem("token");
         }
     };
@@ -69,7 +46,6 @@ export const UserProvider = ({ children }) => {
                 token: state.token,
                 user: state.user,
                 login,
-                getUserInfo,
                 logout,
             }}
         >

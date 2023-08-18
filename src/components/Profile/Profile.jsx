@@ -2,21 +2,20 @@ import React, { useContext, useEffect } from "react";
 import { UserContext } from "../../context/UserContext/UserState";
 import { Card, Spinner } from "@chakra-ui/react";
 
-
 const Profile = () => {
-    const { user, getUserInfo } = useContext(UserContext);
+    // const { user, getUserInfo } = useContext(UserContext);
 
-    useEffect(() => {
-        getUserInfo();
-    }, []);
+    // useEffect(() => {
+    //     getUserInfo();
+    // }, []);
 
-    if (!user) {
-        return <Spinner size="lg" />;
-    }
+    // if (!user) {
+    //     return <Spinner size="lg" />;
+    // }
 
     return (
         <div>
-            <Card title={user.name} borderWidth="1px" borderRadius="lg" p={4} borderColor="pink" maxWidth="300px" mt={4}>
+            {/* <Card title={user.name} borderWidth="1px" borderRadius="lg" p={4} borderColor="pink" maxWidth="300px" mt={4}>
                 <p>{user.email}</p>
             </Card>
             <div>
@@ -37,7 +36,8 @@ const Profile = () => {
                         ))}
                     </Card>
                 ))}
-            </div>
+            </div> */}
+            <p>jajaja que bueno papa!!!!</p>
         </div>
     );
 };

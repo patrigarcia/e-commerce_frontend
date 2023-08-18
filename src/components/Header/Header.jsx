@@ -25,6 +25,9 @@ const Header = () => {
                         <Link className="link" to="/contact">
                             CONTACTO
                         </Link>
+                        <Link className="link" to="/profile">
+                            PERFIL
+                        </Link>
                     </>
                 )}
             </Flex>

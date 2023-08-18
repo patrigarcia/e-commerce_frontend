@@ -1,24 +1,20 @@
-const users = (state, action) => {
+const userReducer = (state, action) => {
     switch (action.type) {
         case "LOGIN":
             return {
                 ...state,
                 token: action.payload.token,
-            };
-        case "GET_USER_INFO":
-            return {
-                ...state,
-                user: action.payload,
+                user: action.payload.user,
             };
         case "LOGOUT":
             return {
                 ...state,
-                user: null,
                 token: null,
+                user: null,
             };
-
         default:
             return state;
     }
 };
-export default users;
+
+export default userReducer;
