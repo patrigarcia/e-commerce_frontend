@@ -1,4 +1,5 @@
-import { Box, Button, Checkbox, Container, Divider, FormControl, FormLabel, Heading, HStack, Input, Link, Stack, Text } from "@chakra-ui/react";
+import { Box, Button, Checkbox, Container, FormControl, FormLabel, Heading, HStack, Input, Stack, Text } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 import PasswordField from "./PasswordField";
 
 const Login = () => (
@@ -31,7 +32,7 @@ const Login = () => (
                         Inicia sesión en Arcade
                     </Heading>
                     <Text color="fg.muted">
-                        Aún no tienes cuenta? <Link href="#">Regístrate</Link>
+                        Aún no tienes cuenta? <Link to="/signup">Regístrate</Link>
                     </Text>
                 </Stack>
             </Stack>
@@ -69,7 +70,7 @@ const Login = () => (
                         <Checkbox defaultChecked>Recordarme</Checkbox>
                     </HStack>
                     <Stack spacing="6">
-                        <Button>Iniciar sesión</Button>
+                        <Button colorScheme="purple">Iniciar sesión</Button>
                     </Stack>
                 </Stack>
             </Box>

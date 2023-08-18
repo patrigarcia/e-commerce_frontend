@@ -1,21 +1,18 @@
 import React from "react";
-import { Flex, Box, Text, Image, Link } from "@chakra-ui/react";
+import { Flex, Box, Image, Link } from "@chakra-ui/react";
 
 const ImageBar = () => {
     return (
         <Flex bg="purple" color="white" alignItems="center" direction="row" p={4}>
-            <Box flex="1">
-                <Text fontSize="sm">¡No te pierdas nuestras promociones especiales!</Text>
-            </Box>
-            <Box>
+            <Box display="flex" alignItems="center">
                 <Link href="/promotions">
-                    <Image src="/images/promotion1.jpg" alt="Promotion 1" boxSize="50px" mx={2} />
+                    <Image src="http://192.168.1.139:9001/uploads/image_1691054682286-839026399.jpeg" alt="Promotion 1" boxSize="150px" mx={2} />
                 </Link>
                 <Link href="/promotions">
-                    <Image src="/images/promotion2.jpg" alt="Promotion 2" boxSize="50px" mx={2} />
+                    <Image src="http://192.168.1.139:9001/uploads/image_1691054682286-839026399.jpeg" alt="Promotion 2" boxSize="150px" mx={2} />
                 </Link>
                 <Link href="/promotions">
-                    <Image src="/images/promotion3.jpg" alt="Promotion 3" boxSize="50px" mx={2} />
+                    <Image src="http://192.168.1.139:9001/uploads/image_1691054682286-839026399.jpeg" alt="Promotion 3" boxSize="150px" mx={2} />
                 </Link>
             </Box>
         </Flex>

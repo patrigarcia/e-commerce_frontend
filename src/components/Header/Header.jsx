@@ -12,14 +12,14 @@ const Header = () => {
     return (
         <Flex className="navbar" alignItems="flex-start" justifyContent="space-between" direction="row">
             <Flex alignItems="center">
-                <Link to="/home">
+                <Link to="/">
                     <Image className="logo" src={logo} boxSize="40px" />
                 </Link>
                 <Spacer />
 
                 {!isMobile && (
                     <>
-                        <Link className="link" to="/home">
+                        <Link className="link" to="/">
                             INICIO
                         </Link>
                         <Link className="link" to="/contact">
@@ -34,7 +34,7 @@ const Header = () => {
                     <MenuButton as={IconButton} aria-label="Options" icon={<HamburgerIcon />} variant="outline" />
                     <MenuList>
                         <MenuItem>
-                            <Link className="link" to="/home">
+                            <Link className="link" to="/">
                                 INICIO
                             </Link>
                         </MenuItem>
