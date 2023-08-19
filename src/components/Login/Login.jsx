@@ -1,8 +1,9 @@
 import { useContext, useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { UserContext } from "../../context/UserContext/UserState";
-import logo from "../../assets/arcade.png";
+import logo2 from "../../assets/arcade.png";
 import { Box, Button, Card, FormLabel, Input, Link as ChakraLink, Spinner, Center, Flex } from "@chakra-ui/react";
+import "./Login.scss";
 
 const LoginPage = () => {
     const [isLoading, setLoading] = useState(false);
@@ -28,28 +29,28 @@ const LoginPage = () => {
 
     return (
         <>
-            <Box display="flex" alignItems="center" justifyContent="flex-start" p={4}>
+            <Box className="logo-container">
                 <Link to="/">
-                    <img className="logo" src={logo} width={100} />
+                    <img className="logo" src={logo2} width={100} alt="Logo" />
                 </Link>
-                <Center mt={4} mb={4} style={{ textAlign: "center" }}>
-                    <h1>Bienvenid@ de nuevo!</h1>
-                </Center>
             </Box>
-            <Box display="flex" alignItems="center" justifyContent="center" height="100vh">
-                <Card p={8} boxShadow="md" borderRadius="md">
+            <Center className="heading">
+                <h1>Bienvenid@ de nuevo!</h1>
+            </Center>
+            <Box className="form-container">
+                <Card className="card">
                     <form onSubmit={handleSubmit}>
                         <Box mb={4}>
-                            <FormLabel>Email</FormLabel>
+                            <FormLabel className="form-label">Email</FormLabel>
                             <Input type="email" placeholder="Enter email" />
                         </Box>
 
                         <Box mb={4}>
-                            <FormLabel>Contraseña</FormLabel>
+                            <FormLabel className="form-label">Contraseña</FormLabel>
                             <Input type="password" placeholder="Enter password" />
                         </Box>
 
-                        <Flex direction="column" alignItems="flex-start">
+                        <Flex className="button-container">
                             <Button type="submit" colorScheme="purple" isLoading={isLoading} loadingText="Submitting..." width="100%" mb={4}>
                                 {isLoading ? <Spinner size="sm" mr={2} /> : "Iniciar sesión"}
                             </Button>
@@ -57,13 +58,13 @@ const LoginPage = () => {
 
                         <Box mb={2}>
                             <span>Aún no tienes cuenta? </span>
-                            <ChakraLink as={Link} to="/register">
+                            <ChakraLink as={Link} to="/register" className="link">
                                 Regístrate aquí
                             </ChakraLink>
                         </Box>
 
                         <Box>
-                            <ChakraLink as={Link} to="/">
+                            <ChakraLink as={Link} to="/" className="link">
                                 O vuelve a Inicio
                             </ChakraLink>
                         </Box>
