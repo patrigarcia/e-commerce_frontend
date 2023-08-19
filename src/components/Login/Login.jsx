@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { UserContext } from "../../context/UserContext/UserState";
-import logo2 from "../../assets/arcade.png";
+import logo2 from "../../assets/arcade_imago.png";
 import { Box, Button, Card, FormLabel, Input, Link as ChakraLink, Spinner, Center, Flex } from "@chakra-ui/react";
 import "./Login.scss";
 
@@ -31,7 +31,7 @@ const LoginPage = () => {
         <>
             <Box className="logo-container">
                 <Link to="/">
-                    <img className="logo" src={logo2} width={100} alt="Logo" />
+                    <img className="logo" src={logo2}  alt="Logo" />
                 </Link>
             </Box>
             <Center className="heading">

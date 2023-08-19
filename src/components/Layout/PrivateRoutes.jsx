@@ -5,7 +5,7 @@ import Layout from "./Layout";
 
 const PrivateRoutes = () => {
     const { user } = useContext(UserContext);
-    console.log(user);
+
     if (!user) return <Navigate to="/login" />;
 
     return <Layout />;
