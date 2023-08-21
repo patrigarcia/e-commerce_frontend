@@ -1,0 +1,44 @@
+img{
+    width: 100%;
+    max-width: 100px;
+    height: auto;
+    padding: 5px;
+}
+
+.galeria{
+    padding: 1em;
+}
+
+
+.profile-container {
+    align-items: flex-start;
+
+    & > .avatar-container {
+        border-right: 1px solid #ccc;
+        margin-top: 4rem;
+        padding: 2rem;
+
+        & .avatar {
+            cursor: pointer;
+            transition: border-color 0.3s ease-in-out;
+            border-radius: 6px; 
+
+            &.selected {
+                border: 2px solid purple;
+            }
+        }
+    }
+
+    & > .user-info-container {
+        padding: 4rem;
+
+        & .avatar-image {
+            width: 100px; 
+        }
+
+        & .avatar-icon {
+            font-size: 100px;
+            color: #ccc;
+        }
+    }
+}

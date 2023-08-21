@@ -3,10 +3,12 @@ import userReducer from "./UserReducer";
 import apiClient from "../../api/apiClient";
 
 const token = localStorage.getItem("token");
+const user = JSON.parse(localStorage.getItem("user"));
 
 const initialState = {
     token: token ? token : null,
-    user: null,
+    user: user ? user : null,
+    avatar: user ? user.avatar : null,
 };
 
 export const UserContext = createContext(initialState);
@@ -24,6 +26,7 @@ export const UserProvider = ({ children }) => {
 
         if (res.data) {
             localStorage.setItem("token", res.data.token);
+            localStorage.setItem("user", JSON.stringify(res.data.user));
         }
     };
 
@@ -37,7 +40,15 @@ export const UserProvider = ({ children }) => {
 
         if (res.data) {
             localStorage.removeItem("token");
+            localStorage.removeItem("user");
         }
+    };
+
+    const setAvatar = (avatar) => {
+        dispatch({
+            type: "AVATAR",
+            payload: avatar,
+        });
     };
 
     return (
@@ -45,8 +56,10 @@ export const UserProvider = ({ children }) => {
             value={{
                 token: state.token,
                 user: state.user,
+                avatar: state.avatar,
                 login,
                 logout,
+                setAvatar,
             }}
         >
             {children}

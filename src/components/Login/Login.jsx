@@ -31,7 +31,7 @@ const LoginPage = () => {
         <>
             <Box className="logo-container">
                 <Link to="/">
-                    <img className="logo" src={logo2}  alt="Logo" />
+                    <img className="logo" src={logo2} alt="Logo" />
                 </Link>
             </Box>
             <Center className="heading">
@@ -42,16 +42,16 @@ const LoginPage = () => {
                     <form onSubmit={handleSubmit}>
                         <Box mb={4}>
                             <FormLabel className="form-label">Email</FormLabel>
-                            <Input type="email" placeholder="Enter email" />
+                            <Input type="email" placeholder="Enter email" required />
                         </Box>
 
                         <Box mb={4}>
                             <FormLabel className="form-label">Contraseña</FormLabel>
-                            <Input type="password" placeholder="Enter password" />
+                            <Input type="password" placeholder="Enter password" required />
                         </Box>
 
                         <Flex className="button-container">
-                            <Button type="submit" colorScheme="purple" isLoading={isLoading} loadingText="Submitting..." width="100%" mb={4}>
+                            <Button type="submit" colorScheme="purple" isLoading={isLoading} loadingText="Iniciando sesión..." width="100%" mb={4}>
                                 {isLoading ? <Spinner size="sm" mr={2} /> : "Iniciar sesión"}
                             </Button>
                         </Flex>

@@ -2,6 +2,7 @@ import React from "react";
 import { Flex, Box, Text, IconButton, Collapse, ListItem, UnorderedList, SimpleGrid, Center, Heading, Divider } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import ImageBar from "../ImageBar/ImageBar";
+import Products from "../Products/Products"; // Importa el componente Products
 
 const Home = () => {
     const [isOpen, setIsOpen] = React.useState(false);
@@ -12,15 +13,14 @@ const Home = () => {
 
     return (
         <>
-            <ImageBar />
+            <ImageBar width="100%" />
             <Flex>
-                <Box as="aside" w="300px" p={4} borderRight="1px solid #ccc" mt={10}>
+                <Box as="aside" w="200px" p={4} borderRight="1px solid #ccc" mt={10}>
                     <Text fontSize="xl" mb={4}>
                         Categorías
                     </Text>
                     <UnorderedList styleType="none">
                         {" "}
-                        {/* Cambiamos listStyleType a styleType */}
                         <ListItem>
                             <Flex align="center">
                                 <Text>Consolas</Text>
@@ -29,7 +29,6 @@ const Home = () => {
                             <Collapse in={isOpen} animateOpacity>
                                 <UnorderedList ml={6} mt={2} styleType="none">
                                     {" "}
-                                    {/* Cambiamos listStyleType a styleType */}
                                     <ListItem>Vintage</ListItem>
                                     <ListItem>PS5</ListItem>
                                 </UnorderedList>
@@ -37,7 +36,7 @@ const Home = () => {
                         </ListItem>
                         <ListItem>Juegos</ListItem>
                         <ListItem>Accesorios</ListItem>
-                    </UnorderedList>
+                    </UnorderedList>{" "}
                 </Box>
                 <Box flex="1" p={4} mt={10}>
                     <main>
@@ -45,26 +44,7 @@ const Home = () => {
                             Consolas
                         </Heading>
                         <Divider mb={4} />
-                        <SimpleGrid columns={3} spacing={4}>
-                            <Center bg="gray.100" p={6} borderRadius="md">
-                                Tarjeta 1
-                            </Center>
-                            <Center bg="gray.100" p={6} borderRadius="md">
-                                Tarjeta 2
-                            </Center>
-                            <Center bg="gray.100" p={6} borderRadius="md">
-                                Tarjeta 3
-                            </Center>
-                            <Center bg="gray.100" p={6} borderRadius="md">
-                                Tarjeta 4
-                            </Center>
-                            <Center bg="gray.100" p={6} borderRadius="md">
-                                Tarjeta 5
-                            </Center>
-                            <Center bg="gray.100" p={6} borderRadius="md">
-                                Tarjeta 6
-                            </Center>
-                        </SimpleGrid>
+                        <Products />
                     </main>
                 </Box>
             </Flex>
