@@ -34,6 +34,15 @@ export const ProductsProvider = ({ children }) => {
             type: "CLEAR_CART",
         });
     };
+    const getProductById = async (productId) => {
+        try {
+            const res = await axios.get(API_URL + `/products/id/${productId}`);
+            return res.data;
+        } catch (error) {
+            console.error("Error fetching product by ID:", error);
+            return null;
+        }
+    };
     return (
         <ProductsContext.Provider
             value={{
@@ -42,6 +51,7 @@ export const ProductsProvider = ({ children }) => {
                 getProducts,
                 addCart,
                 clearCart,
+                getProductById,
             }}
         >
             {children}

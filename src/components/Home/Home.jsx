@@ -2,7 +2,7 @@ import React from "react";
 import { Flex, Box, Text, IconButton, Collapse, ListItem, UnorderedList, SimpleGrid, Center, Heading, Divider } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import ImageBar from "../ImageBar/ImageBar";
-import Products from "../Products/Products"; // Importa el componente Products
+import Products from "../Products/Products";
 
 const Home = () => {
     const [isOpen, setIsOpen] = React.useState(false);

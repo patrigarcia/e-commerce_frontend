@@ -11,7 +11,7 @@ const Cart = () => {
 
     return (
         <div>
-            <Divider orientation="horizontal">Cart</Divider>
+            <Divider orientation="horizontal">Carrito</Divider>
             <UnorderedList>
                 {data.map((item) => (
                     <ListItem key={item}>{item}</ListItem>
@@ -22,7 +22,7 @@ const Cart = () => {
                     Vaciar carrito
                 </Button>
                 <Button
-                    colorScheme="green"
+                    colorScheme="purple"
                     onClick={() => {
                         createOrder(cart);
                         clearCart();

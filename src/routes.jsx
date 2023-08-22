@@ -10,6 +10,7 @@ import PrivateRoutes from "./components/Layout/PrivateRoutes";
 import Profile from "./components/Profile/Profile";
 import SignUp from "./components/SignUp/SignUp";
 import Cart from "./components/Cart/Cart";
+import ProductPage from "./components/ProductPage/ProductPage";
 
 const router = createBrowserRouter([
     {
@@ -28,6 +29,12 @@ const router = createBrowserRouter([
         element: <Login />,
         errorElement: <ErrorPage />,
     },
+    {
+        path: "product/:productId",
+        element: <ProductPage />,
+        errorElement: <ErrorPage />,
+    },
+
     {
         element: <PrivateRoutes />,
         errorElement: <ErrorPage />,

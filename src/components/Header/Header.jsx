@@ -1,5 +1,3 @@
-// Header.jsx
-
 import React from "react";
 import { Link } from "react-router-dom";
 import { Flex, Image, Input, IconButton, Text, Menu, MenuButton, MenuList, MenuItem, useBreakpointValue, Spacer, HStack } from "@chakra-ui/react";

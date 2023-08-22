@@ -1,7 +1,7 @@
 import { createContext } from "react";
 import axios from "axios";
 
-const API_URL = "http://localhost:9000";
+const API_URL = "http://192.168.1.139:9001";
 
 export const OrdersContext = createContext();
 
