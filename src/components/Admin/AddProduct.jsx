@@ -3,7 +3,7 @@ import { Box, Button, FormControl, FormLabel, Input, Text, VStack, InputGroup, I
 import apiClient from "../../api/apiClient";
 import { ProductsContext } from "../../context/ProductsContext/ProductsState";
 
-const AdminAddProduct = () => {
+const AddProduct = () => {
     const [ProductInformation, setProductInformation] = useState({
         categoryId: "",
         name: "",
@@ -50,7 +50,6 @@ const AdminAddProduct = () => {
                 stock: 0,
                 image: null,
             });
-            // aca hay que agregar el componente de actualizar los productos tambien
             getProducts();
         } catch (error) {
             console.error("Error al crear el producto:", error);
@@ -63,22 +62,22 @@ const AdminAddProduct = () => {
                 Agregar un producto
             </Text>
             <form onSubmit={manejarEnvio}>
-                <VStack spacing={3} align="start">
+                <VStack align="start">
                     <FormControl>
                         <FormLabel>Categoría</FormLabel>
-                        <Input type="text" name="categoryId" value={ProductInformation.categoryId} onChange={manejarCambioEntrada} />
+                        <Input mb={3} type="text" name="categoryId" value={ProductInformation.categoryId} onChange={manejarCambioEntrada} />
                         <FormLabel>Nombre</FormLabel>
-                        <Input type="text" name="name" placeholder="Nombre del producto" value={ProductInformation.name} onChange={manejarCambioEntrada} />
+                        <Input mb={3} type="text" name="name" placeholder="Nombre del producto" value={ProductInformation.name} onChange={manejarCambioEntrada} />
                         <FormLabel>Descripción</FormLabel>
-                        <Input type="text" name="description" placeholder="Describe el producto" value={ProductInformation.description} onChange={manejarCambioEntrada} />
+                        <Input mb={3} type="text" name="description" placeholder="Describe el producto" value={ProductInformation.description} onChange={manejarCambioEntrada} />
 
                         <FormLabel>Price</FormLabel>
                         <InputGroup>
                             <InputLeftAddon children="€" />
-                            <Input type="price" name="price" value={ProductInformation.price} onChange={manejarCambioEntrada} />
+                            <Input mb={3} type="price" name="price" value={ProductInformation.price} onChange={manejarCambioEntrada} />
                         </InputGroup>
                         <FormLabel>Stock</FormLabel>
-                        <Input type="number" name="stock" value={ProductInformation.stock} onChange={manejarCambioEntrada} />
+                        <Input mb={3} type="number" name="stock" value={ProductInformation.stock} onChange={manejarCambioEntrada} />
 
                         <FormLabel>Imagen</FormLabel>
                         <Input type="file" name="image" onChange={manejarCambioImagen} />
@@ -93,4 +92,4 @@ const AdminAddProduct = () => {
     );
 };
 
-export default AdminAddProduct;
+export default AddProduct;

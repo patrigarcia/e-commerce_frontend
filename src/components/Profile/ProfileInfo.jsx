@@ -7,16 +7,7 @@ import "./Profile.scss";
 const ProfileInfo = ({ setOrders }) => {
     const { user, setUser } = useContext(UserContext);
     const avatarRelativePath = "src/assets/avatars/";
-    const avatarOptions = [
-        // avatares subidos por mi
-        "michael.png",
-        "franklin.png",
-        "trevor.jpeg",
-        "lara.jpeg",
-        "chungLi.jpeg",
-        "mario.jpeg",
-        "peach.png",
-    ];
+    const avatarOptions = ["michael.png", "franklin.png", "trevor.png", "mario.png", "pacman.png", "subzero.png", "chunLi.png", "messi.png", "peach.png"];
 
     const [selectedAvatar, setSelectedAvatar] = useState(avatarRelativePath + user.avatar);
 
@@ -28,8 +19,8 @@ const ProfileInfo = ({ setOrders }) => {
     const fetchOrders = async () => {};
 
     return (
-        <Flex align="flex-start" className="profile-container">
-            <Box as="aside" w="300px" p={2} borderRight="1px solid #ccc" mt={4} className="avatar-container">
+        <Flex className="profile-container">
+            <Box as="aside" className="avatar-container">
                 <p>Selecciona tu avatar:</p>
                 <Grid className="galeria" templateColumns={{ base: "repeat(3, 1fr)", sm: "repeat(2, 1fr)", md: "repeat(3, 1fr)" }}>
                     {avatarOptions.map((avatar, index) => (
@@ -48,11 +39,7 @@ const ProfileInfo = ({ setOrders }) => {
                 {user && (
                     <VStack align="start" spacing={4}>
                         <Text>Bienvenid@, {user.name}!</Text>
-                        {selectedAvatar ? (
-                            <Image src={selectedAvatar} alt="Selected Avatar" boxSize="100px" className="avatar-image" />
-                        ) : (
-                            <FaUserCircle size={100} color="#ccc" className="avatar-icon" />
-                        )}
+                        {selectedAvatar ? <Image src={selectedAvatar} alt="Selected Avatar" className="avatar-image" /> : <FaUserCircle className="avatar-icon" />}
                         <Button onClick={fetchOrders}>Ver Pedidos</Button>
                     </VStack>
                 )}
