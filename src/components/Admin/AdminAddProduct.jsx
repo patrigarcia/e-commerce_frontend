@@ -68,9 +68,9 @@ const AdminAddProduct = () => {
                         <FormLabel>Categoría</FormLabel>
                         <Input type="text" name="categoryId" value={ProductInformation.categoryId} onChange={manejarCambioEntrada} />
                         <FormLabel>Nombre</FormLabel>
-                        <Input type="text" name="name" value={ProductInformation.name} onChange={manejarCambioEntrada} />
+                        <Input type="text" name="name" placeholder="Nombre del producto" value={ProductInformation.name} onChange={manejarCambioEntrada} />
                         <FormLabel>Descripción</FormLabel>
-                        <Input type="text" name="description" value={ProductInformation.description} onChange={manejarCambioEntrada} />
+                        <Input type="text" name="description" placeholder="Describe el producto" value={ProductInformation.description} onChange={manejarCambioEntrada} />
 
                         <FormLabel>Price</FormLabel>
                         <InputGroup>

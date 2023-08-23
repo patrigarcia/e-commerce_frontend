@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { ProductsContext } from "../../context/ProductsContext/ProductsState";
-import { Flex, Grid, Image, VStack, Text, Button, Card, IconButton, Select } from "@chakra-ui/react";
+import { Flex, Grid, Image, VStack, Text, Button, Card, IconButton, Select, Box } from "@chakra-ui/react";
 import { FaHeart } from "react-icons/fa";
 import { getImageURL } from "../../api/apiClient";
 import { Link } from "react-router-dom";
@@ -41,7 +41,7 @@ const Products = () => {
 
     return (
         <>
-            <Select value={sortBy} onChange={handleSortChange} width="200px" marginBottom="20px">
+            <Select value={sortBy} onChange={handleSortChange} width="35%" mb="20px">
                 <option value="priceHighToLow">Ordenar por: Precio (mayor a menor)</option>
                 <option value="priceLowToHigh">Ordenar por: Precio (menor a mayor)</option>
             </Select>
@@ -51,7 +51,9 @@ const Products = () => {
                         <Card variant="filled" boxShadow="xl" key={product.id}>
                             <div className="product-card">
                                 <VStack spacing={2} align="start">
-                                    <Image className="product-image" src={getImageURL(product.imagePath)} alt={product.name} rounded="lg" />
+                                    <Box className="image-container">
+                                        <Image className="product-image" src={getImageURL(product.imagePath)} alt={product.name} rounded="lg" />
+                                    </Box>
                                     <Text className="product-name">{product.name}</Text>
                                     <Text className="product-description">{product.description}</Text>
                                     <Text className="product-price" fontWeight="bold">

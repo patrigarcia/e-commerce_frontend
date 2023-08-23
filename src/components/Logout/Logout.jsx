@@ -24,9 +24,7 @@ const Logout = () => {
 
     return (
         <>
-            <Link pl={3} onClick={handleLogout}>
-                Cerrar sesión
-            </Link>
+            <Link onClick={handleLogout}>Cerrar sesión</Link>
         </>
     );
 };

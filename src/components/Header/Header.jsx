@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Flex, Image, Input, IconButton, Text, Menu, MenuButton, MenuList, MenuItem, useBreakpointValue, Spacer, HStack } from "@chakra-ui/react";
+import { Flex, Image, Input, IconButton, Text, Menu, MenuButton, MenuList, MenuItem, useBreakpointValue, Spacer, HStack, Divider } from "@chakra-ui/react";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import { FaUser, FaShoppingCart, FaSearch, FaUserCog } from "react-icons/fa";
 import logo from "../../assets/logo.png";
@@ -11,8 +11,9 @@ import { UserContext } from "../../context/UserContext/UserState";
 import "./Header.scss";
 
 const Header = () => {
+    const avatarRelativePath = "src/assets/avatars/";
     const isMobile = useBreakpointValue({ base: true, md: false });
-    const { user, avatar } = useContext(UserContext);
+    const { user } = useContext(UserContext);
 
     return (
         <Flex className="navbar" alignItems="flex-start" justifyContent="space-between" direction="row">
@@ -38,16 +39,16 @@ const Header = () => {
                 <Menu>
                     <MenuButton as={IconButton} aria-label="Options" icon={<HamburgerIcon />} variant="outline" />
                     <MenuList>
-                        <MenuItem>
+                        <MenuItem className="item">
                             {user ? (
-                                <Link className="link" to="/profile">
+                                <Link to="/profile">
                                     <HStack>
-                                        <Image src={avatar} alt="Avatar" boxSize="30px" borderRadius="50%" />
+                                        <Image src={avatarRelativePath + user.avatar} alt="Avatar" boxSize="50px" borderRadius="50%" />
                                         <Text>Mi cuenta</Text>
                                     </HStack>
                                 </Link>
                             ) : (
-                                <Link className="link" to="/login">
+                                <Link to="/login">
                                     <HStack>
                                         <FaUser size={30} />
                                         <Text>Iniciar sesión</Text>
@@ -55,23 +56,31 @@ const Header = () => {
                                 </Link>
                             )}
                         </MenuItem>
+                        <MenuItem className="item">
+                            <Link to="/">Inicio</Link>
+                        </MenuItem>
+                        <MenuItem className="item">
+                            <Link to="/contact">Contacto</Link>
+                        </MenuItem>
 
-                        <MenuItem>{user && <Logout />}</MenuItem>
+                        <MenuItem className="item">{user && <Logout />}</MenuItem>
 
-                        <MenuItem>
+                        <Divider />
+
+                        <MenuItem className="item">
                             <ColorModeSwitch />
                         </MenuItem>
                     </MenuList>
                 </Menu>
             ) : (
                 <Flex alignItems="center">
-                    <Input placeholder="Buscar..." variant="filled" maxWidth="150px" />
+                    <Input placeholder="Buscar..." variant="filled" maxWidth="200px" />
                     <IconButton aria-label="Buscar" icon={<FaSearch />} variant="ghost" size="md" />
 
                     {user ? (
                         <Link className="link" to="/profile">
                             <HStack>
-                                <Image src={avatar} alt="Avatar" boxSize="50px" borderRadius="50%" />
+                                <Image src={avatarRelativePath + user.avatar} alt="Avatar" boxSize="50px" borderRadius="50%" />
                                 <Text>Mi cuenta</Text>
                             </HStack>
                         </Link>
@@ -86,15 +95,14 @@ const Header = () => {
 
                     {user && <Logout />}
 
-                    <Link className="carrito" to="/cart">
-                        <FaShoppingCart size={30} />
-                    </Link>
-
                     {user && user.role === "admin" && (
                         <Link className="link" to="/admin">
                             <FaUserCog size={30} />
                         </Link>
                     )}
+                    <Link className="carrito" to="/cart">
+                        <FaShoppingCart size={30} />
+                    </Link>
                     <ColorModeSwitch />
                 </Flex>
             )}

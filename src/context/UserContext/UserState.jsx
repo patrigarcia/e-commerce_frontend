@@ -8,7 +8,6 @@ const user = JSON.parse(localStorage.getItem("user"));
 const initialState = {
     token: token ? token : null,
     user: user ? user : null,
-    avatar: user ? user.avatar : null,
 };
 
 export const UserContext = createContext(initialState);
@@ -44,10 +43,12 @@ export const UserProvider = ({ children }) => {
         }
     };
 
-    const setAvatar = (avatar) => {
+    const setUser = async (user) => {
+        await apiClient.put(`/users/${user.name}`, user);
+
         dispatch({
-            type: "AVATAR",
-            payload: avatar,
+            type: "USER",
+            payload: user,
         });
     };
 
@@ -56,10 +57,9 @@ export const UserProvider = ({ children }) => {
             value={{
                 token: state.token,
                 user: state.user,
-                avatar: state.avatar,
                 login,
                 logout,
-                setAvatar,
+                setUser,
             }}
         >
             {children}

@@ -5,7 +5,6 @@ const userReducer = (state, action) => {
                 ...state,
                 token: action.payload.token,
                 user: action.payload.user,
-                avatar: action.payload.avatar,
             };
         case "LOGOUT":
             return {
@@ -13,10 +12,10 @@ const userReducer = (state, action) => {
                 token: null,
                 user: null,
             };
-        case "AVATAR":
+        case "USER":
             return {
                 ...state,
-                avatar: action.payload,
+                user: action.payload,
             };
         default:
             return state;

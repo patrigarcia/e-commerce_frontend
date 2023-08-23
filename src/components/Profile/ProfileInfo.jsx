@@ -5,23 +5,24 @@ import { FaUserCircle } from "react-icons/fa";
 import "./Profile.scss";
 
 const ProfileInfo = ({ setOrders }) => {
-    const { user, setAvatar } = useContext(UserContext);
-
+    const { user, setUser } = useContext(UserContext);
+    const avatarRelativePath = "src/assets/avatars/";
     const avatarOptions = [
         // avatares subidos por mi
-        "src/assets/avatars/michael.png",
-        "src/assets/avatars/franklin.png",
-        "src/assets/avatars/trevor.jpeg",
-        "src/assets/avatars/lara.jpeg",
-        "src/assets/avatars/chungLi.jpeg",
-        "src/assets/avatars/mario.jpeg",
-        "src/assets/avatars/peach.png",
+        "michael.png",
+        "franklin.png",
+        "trevor.jpeg",
+        "lara.jpeg",
+        "chungLi.jpeg",
+        "mario.jpeg",
+        "peach.png",
     ];
-    const [selectedAvatar, setSelectedAvatar] = useState(avatarOptions[0]);
+
+    const [selectedAvatar, setSelectedAvatar] = useState(avatarRelativePath + user.avatar);
 
     const handleAvatarChange = (avatar) => {
-        setSelectedAvatar(avatar);
-        setAvatar(avatar);
+        setSelectedAvatar(avatarRelativePath + avatar);
+        setUser({ ...user, avatar: avatar });
     };
 
     const fetchOrders = async () => {};
@@ -33,7 +34,12 @@ const ProfileInfo = ({ setOrders }) => {
                 <Grid className="galeria" templateColumns={{ base: "repeat(3, 1fr)", sm: "repeat(2, 1fr)", md: "repeat(3, 1fr)" }}>
                     {avatarOptions.map((avatar, index) => (
                         <GridItem key={index}>
-                            <img src={avatar} alt={`Avatar ${index + 1}`} className={`avatar ${selectedAvatar === avatar ? "selected" : ""}`} onClick={() => handleAvatarChange(avatar)} />
+                            <img
+                                src={avatarRelativePath + avatar}
+                                alt={`Avatar ${index + 1}`}
+                                className={`avatar ${selectedAvatar === avatarRelativePath + avatar ? "selected" : ""}`}
+                                onClick={() => handleAvatarChange(avatar)}
+                            />
                         </GridItem>
                     ))}
                 </Grid>

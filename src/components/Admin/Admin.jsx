@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { Box, Table, Thead, Tbody, Tr, Th, Td, TableContainer, Switch, Text, Flex, Card, Button, Grid } from "@chakra-ui/react";
 import apiClient from "../../api/apiClient";
-import "./Admin.scss";
 import AdminAddProduct from "./AdminAddProduct";
+import AddCategory from "./AddCategory";
+import "./Admin.scss";
 
 const Admin = () => {
     const [users, setUsers] = useState([]);
@@ -36,7 +37,10 @@ const Admin = () => {
 
                 <Card w="90%">
                     <Grid templateColumns="1fr 1fr" gap={4}>
-                        <Box m={10} borderWidth="1px" borderRadius="lg">
+                        <Box className="tabla" m={10} borderWidth="1px" borderRadius="lg">
+                            <Text fontSize="20px" fontWeight="bold" mb={3}>
+                                Permisos
+                            </Text>
                             <TableContainer>
                                 <Table variant="simple">
                                     <Thead>
@@ -61,14 +65,15 @@ const Admin = () => {
                                     </Tbody>
                                 </Table>
                             </TableContainer>
-                            <Box mt={4} mb={4} display="flex" justifyContent="center">
-                                <Button onClick={() => paginate(currentPage - 1)} isDisabled={currentPage === 1} mr={2}>
+                            <Box mt={8} mb={8} display="flex" justifyContent="center">
+                                <Button variant="ghost" colorScheme="purple" onClick={() => paginate(currentPage - 1)} isDisabled={currentPage === 1} mr={1}>
                                     Anterior
                                 </Button>
-                                <Button onClick={() => paginate(currentPage + 1)} isDisabled={indexOfLastUser >= totalUsers}>
+                                <Button variant="ghost" colorScheme="purple" onClick={() => paginate(currentPage + 1)} isDisabled={indexOfLastUser >= totalUsers}>
                                     Siguiente
                                 </Button>
                             </Box>
+                            <AddCategory />
                         </Box>
                         <Box mt={4} p={5}>
                             <AdminAddProduct />

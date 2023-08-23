@@ -1,33 +1,31 @@
 import React, { useState } from "react";
 import { Box, Button, FormControl, FormLabel, Input } from "@chakra-ui/react";
-import { CategoryContext } from "../../context/CategoryContext";
-import apiClient from "../../api/apiClient";
+import useCategories from "../../hooks/useCategories";
 
 function AddCategory() {
-    const { categories } = CategoryContext();
+    const { addCategory } = useCategories();
     const [newCategoryName, setNewCategoryName] = useState("");
+    const [error, setError] = useState("");
 
-    const handleCreateCategory = async () => {
-        try {
-            const response = await apiClient.post("/categories", { name: newCategoryName });
-            const data = await response.json();
-            const newCategory = data.category;
-
-            setNewCategoryName("");
-
-            categories.push(newCategory);
-        } catch (error) {
-            console.error(error);
+    const handleCategoryAddition = () => {
+        if (newCategoryName === "") {
+            setError("La categoría debe tener al menos un caracter!");
+            return;
         }
+        addCategory(newCategoryName);
+        setError("");
     };
 
     return (
         <Box>
             <FormControl>
                 <FormLabel>Nueva categoría</FormLabel>
-                <Input type="text" value={newCategoryName} onChange={(e) => setNewCategoryName(e.target.value)} />
+                <Input type="text" placeholder="Ingrese el nombre de la nueva categoría" onChange={(e) => setNewCategoryName(e.target.value)} />
             </FormControl>
-            <Button onClick={handleCreateCategory}>Crear categoría</Button>
+            <Button mt={3} onClick={handleCategoryAddition} colorScheme="purple">
+                Crear categoría
+            </Button>
+            {error != "" && <p>{error}</p>}
         </Box>
     );
 }
