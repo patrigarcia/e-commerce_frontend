@@ -1,4 +1,17 @@
+$color1: rgba(255, 0, 218, 0.5);
+$color2: rgba(37, 0, 255, 0.5);
+
+.background-gradient {
+    background: linear-gradient(to bottom right, $color1, $color2);
+}
+
+
+
 .page{
     max-width: 100% !important;
     overflow-x: hidden !important;
+
+  
+        background: linear-gradient(to bottom right, $color1, $color2);
+    
 }

@@ -1,13 +1,21 @@
-.titulo{
+
+.role_page{
+    margin-top: 5%;
+ 
+    
+    .titulo{
     font-weight: 500;
-    font-size: 1.4em;
-    padding: 4%;
+    font-size: 1.3em;
+    padding: 4%;   
+    }
+
+    .tabla{
+        width: 100%;
+        max-height: 100%;
+        padding: 4%;
+        margin-left: 4%;
+
+    }
+
+
 }
-
-.tabla{
-    max-height: 55%;
-    padding: 4%;
-  
-
-}
-

@@ -17,7 +17,7 @@ function AddCategory() {
     };
 
     return (
-        <Box p={3}>
+        <Box className="category_box">
             <FormControl>
                 <FormLabel>Nueva categoría</FormLabel>
                 <Input type="text" placeholder="Ingrese el nombre de la nueva categoría" onChange={(e) => setNewCategoryName(e.target.value)} />

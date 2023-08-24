@@ -11,33 +11,33 @@ const AdminPanel = ({ onAdminRoleClick, onAddCategoryClick, onAddProductClick, o
                         <Text className="panel_title">Panel de administrador</Text>
                         <UnorderedList className="lista">
                             <ListItem>
-                                <Button leftIcon={<FaCheckCircle />} className="link_panel" variant="ghost" colorScheme="purple" onClick={() => onAdminRoleClick()}>
+                                <Button leftIcon={<FaCheckCircle />} className="link_panel" variant="ghost" onClick={() => onAdminRoleClick()}>
                                     PERMISOS
                                 </Button>
                             </ListItem>
 
                             <ListItem>
-                                <Button leftIcon={<FaPlusCircle />} variant="ghost" colorScheme="purple" onClick={() => onAddCategoryClick()}>
+                                <Button leftIcon={<FaPlusCircle />} variant="ghost" onClick={() => onAddCategoryClick()}>
                                     AGREGAR CATEGORÍA
                                 </Button>
                             </ListItem>
                             <ListItem>
-                                <Button leftIcon={<FaPlusCircle />} variant="ghost" colorScheme="purple" onClick={() => onAddProductClick()}>
+                                <Button leftIcon={<FaPlusCircle />} variant="ghost" onClick={() => onAddProductClick()}>
                                     AGREGAR PRODUCTO
                                 </Button>
                             </ListItem>
                             <ListItem>
-                                <Button leftIcon={<FaArrowAltCircleRight />} variant="ghost" colorScheme="purple" onClick={() => onUpdateProductClick()}>
+                                <Button leftIcon={<FaArrowAltCircleRight />} variant="ghost" onClick={() => onUpdateProductClick()}>
                                     ACTUALIZAR PRODUCTO
                                 </Button>
                             </ListItem>
                             <ListItem>
-                                <Button leftIcon={<FaDatabase />} variant="ghost" colorScheme="purple" onClick={() => onGetProductsClick()}>
+                                <Button leftIcon={<FaDatabase />} variant="ghost" onClick={() => onGetProductsClick()}>
                                     VER PRODUCTOS
                                 </Button>
                             </ListItem>
                             <ListItem>
-                                <Button leftIcon={<FaTrash />} variant="ghost" colorScheme="purple" onClick={() => onDeleteProductClick()}>
+                                <Button leftIcon={<FaTrash />} variant="ghost" onClick={() => onDeleteProductClick()}>
                                     ELIMINAR PRODUCTO
                                 </Button>
                             </ListItem>

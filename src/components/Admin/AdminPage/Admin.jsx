@@ -29,7 +29,7 @@ const Admin = () => {
                         onDeleteProductClick={() => handleComponentClick("deleteProduct")}
                     />
                 </Box>
-                <Box ml={12}>
+                <Box className="main">
                     {activeComponent === "adminRole" && <AdminRole />}
                     {activeComponent === "addCategory" && <AddCategory />}
                     {activeComponent === "addProduct" && <AddProduct />}

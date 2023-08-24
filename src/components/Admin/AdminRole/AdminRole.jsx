@@ -30,12 +30,12 @@ const AdminRole = () => {
 
     return (
         <>
-            <Flex direction="column" justifyContent="space-between">
+            <Flex className="role_page" direction="column">
                 <Text className="titulo">Cambiar el rol del usuario</Text>
 
-                <Card w="50%">
+                <Card w="50%" ml={10}>
                     <Grid templateColumns="1fr 1fr" gap={5}>
-                        <Box className="tabla" m={10}>
+                        <Box className="tabla">
                             <TableContainer pr={10}>
                                 <Table variant="simple">
                                     <Thead>
