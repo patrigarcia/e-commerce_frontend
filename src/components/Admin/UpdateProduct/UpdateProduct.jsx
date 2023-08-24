@@ -1,8 +1,8 @@
 import React, { useState, useContext } from "react";
+import { ProductsContext } from "../../../context/ProductsContext/ProductsState";
 import { Box, Button, FormControl, FormLabel, Input, Text, VStack, InputGroup, InputLeftAddon, Menu, MenuButton, MenuList, MenuItem } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
-import apiClient from "../../api/apiClient";
-import { ProductsContext } from "../../context/ProductsContext/ProductsState";
+import apiClient from "../../../api/apiClient";
 
 const UpdateProduct = () => {
     const [productId, setProductId] = useState("");

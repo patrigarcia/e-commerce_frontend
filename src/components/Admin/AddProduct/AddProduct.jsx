@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { Box, Button, FormControl, FormLabel, Input, Text, VStack, InputGroup, InputLeftAddon } from "@chakra-ui/react";
-import apiClient from "../../api/apiClient";
-import { ProductsContext } from "../../context/ProductsContext/ProductsState";
+import apiClient from "../../../api/apiClient";
+import { ProductsContext } from "../../../context/ProductsContext/ProductsState";
 
 const AddProduct = () => {
     const [ProductInformation, setProductInformation] = useState({

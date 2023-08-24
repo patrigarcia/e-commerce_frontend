@@ -1,0 +1,23 @@
+.aside{
+    position: relative; 
+    z-index: -2;
+    background-color: rgba(76, 62, 83, 0.5);
+    box-shadow: 0px 12px 15px rgba(124, 124, 124, 0.5);
+    width: 32vh;
+    height: 100vh;
+    justify-content: space-between;
+
+    .panel_title{
+        font-weight: bold;
+        padding: 5%;
+        margin-left: 7%;
+        font-size: 1.3em;
+    }
+
+    .lista{
+        margin-left: 8%;
+        padding-top: 20%;
+        list-style: none;
+    }
+    
+}

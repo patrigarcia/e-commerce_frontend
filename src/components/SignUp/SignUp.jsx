@@ -20,10 +20,8 @@ const SignUp = () => {
             [name]: value,
         }));
     };
-
     const handleSubmit = async (e) => {
         e.preventDefault();
-
         try {
             const response = await axios.post("/users", formData);
             console.log(response.data.message);
