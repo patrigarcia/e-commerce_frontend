@@ -1,48 +1,48 @@
 import { Text, Flex, UnorderedList, ListItem, Link, Button } from "@chakra-ui/react";
-import AddCategory from "../AddCategory/AddCategory";
-import AddProduct from "../AddProduct/AddProduct";
-import AdminRole from "../AdminRole/AdminRole";
-import UpdateProduct from "../UpdateProduct/UpdateProduct";
+import { FaPlusCircle, FaArrowAltCircleRight, FaTrash, FaCheckCircle, FaDatabase } from "react-icons/fa";
 import "./AdminPanel.scss";
 
-const AdminPanel = () => {
+const AdminPanel = ({ onAdminRoleClick, onAddCategoryClick, onAddProductClick, onUpdateProductClick, onGetProductsClick, onDeleteProductClick }) => {
     return (
         <>
             <Flex direction="row">
                 <Flex direction="column" justifyContent="space-between">
-                    <aside className="aside">
+                    <div className="aside">
                         <Text className="panel_title">Panel de administrador</Text>
                         <UnorderedList className="lista">
                             <ListItem>
-                                <Link to={<AdminRole />}>
-                                    <Button className="link_panel" variant="ghost" colorScheme="purple">
-                                        PERMISOS
-                                    </Button>
-                                </Link>
+                                <Button leftIcon={<FaCheckCircle />} className="link_panel" variant="ghost" colorScheme="purple" onClick={() => onAdminRoleClick()}>
+                                    PERMISOS
+                                </Button>
+                            </ListItem>
+
+                            <ListItem>
+                                <Button leftIcon={<FaPlusCircle />} variant="ghost" colorScheme="purple" onClick={() => onAddCategoryClick()}>
+                                    AGREGAR CATEGORÍA
+                                </Button>
                             </ListItem>
                             <ListItem>
-                                <Link to={<AddProduct />}>
-                                    <Button className="link_panel" variant="ghost" colorScheme="purple">
-                                        AGREGAR PRODUCTO
-                                    </Button>
-                                </Link>
+                                <Button leftIcon={<FaPlusCircle />} variant="ghost" colorScheme="purple" onClick={() => onAddProductClick()}>
+                                    AGREGAR PRODUCTO
+                                </Button>
                             </ListItem>
                             <ListItem>
-                                <Link to={<AddCategory />}>
-                                    <Button className="link_panel" variant="ghost" colorScheme="purple">
-                                        AGREGAR CATEGORÍA
-                                    </Button>
-                                </Link>
+                                <Button leftIcon={<FaArrowAltCircleRight />} variant="ghost" colorScheme="purple" onClick={() => onUpdateProductClick()}>
+                                    ACTUALIZAR PRODUCTO
+                                </Button>
                             </ListItem>
                             <ListItem>
-                                <Link to={<UpdateProduct />}>
-                                    <Button className="link_panel" variant="ghost" colorScheme="purple">
-                                        ACTUALIZAR PRODUCTO
-                                    </Button>
-                                </Link>
+                                <Button leftIcon={<FaDatabase />} variant="ghost" colorScheme="purple" onClick={() => onGetProductsClick()}>
+                                    VER PRODUCTOS
+                                </Button>
+                            </ListItem>
+                            <ListItem>
+                                <Button leftIcon={<FaTrash />} variant="ghost" colorScheme="purple" onClick={() => onDeleteProductClick()}>
+                                    ELIMINAR PRODUCTO
+                                </Button>
                             </ListItem>
                         </UnorderedList>
-                    </aside>
+                    </div>
                 </Flex>
             </Flex>
         </>

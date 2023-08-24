@@ -31,7 +31,7 @@ const AdminRole = () => {
     return (
         <>
             <Flex direction="column" justifyContent="space-between">
-                <Text className="titulo">Permisos</Text>
+                <Text className="titulo">Cambiar el rol del usuario</Text>
 
                 <Card w="50%">
                     <Grid templateColumns="1fr 1fr" gap={5}>
@@ -60,7 +60,7 @@ const AdminRole = () => {
                                     </Tbody>
                                 </Table>
                             </TableContainer>
-                            <Box mt={8} mb={8} display="flex" justifyContent="center">
+                            <Box mt={8} display="flex" justifyContent="center">
                                 <Button variant="ghost" colorScheme="purple" onClick={() => paginate(currentPage - 1)} isDisabled={currentPage === 1} mr={1}>
                                     Anterior
                                 </Button>
