@@ -8,6 +8,7 @@ import UpdateProduct from "../UpdateProduct/UpdateProduct";
 import GetProducts from "../GetProducts/GetProducts";
 import DeleteProduct from "../DeleteProduct/DeleteProduct";
 import AddCategory from "../AddCategory/AddCategory";
+import CategoryList from "../AddCategory/CategoryList";
 
 const Admin = () => {
     const [activeComponent, setActiveComponent] = useState(null);

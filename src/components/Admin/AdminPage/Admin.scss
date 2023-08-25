@@ -10,8 +10,10 @@ $color2: rgba(37, 0, 255, 0.5);
 .page{
     max-width: 100% !important;
     overflow-x: hidden !important;
+    background: linear-gradient(to bottom right, $color1, $color2);
 
-  
-        background: linear-gradient(to bottom right, $color1, $color2);
+    .main{
+        width: 100%;
+    }
     
 }

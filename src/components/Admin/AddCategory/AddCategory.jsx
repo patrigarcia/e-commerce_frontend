@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { Box, Button, FormControl, FormLabel, Input } from "@chakra-ui/react";
+import { Box, Button, FormControl, FormLabel, Input, Card, Text } from "@chakra-ui/react";
 import useCategories from "../../../hooks/useCategories";
+import "./AddCategory.scss";
 
 function AddCategory() {
     const { addCategory } = useCategories();
@@ -18,14 +19,17 @@ function AddCategory() {
 
     return (
         <Box className="category_box">
-            <FormControl>
-                <FormLabel>Nueva categoría</FormLabel>
-                <Input type="text" placeholder="Ingrese el nombre de la nueva categoría" onChange={(e) => setNewCategoryName(e.target.value)} />
-            </FormControl>
-            <Button mt={3} onClick={handleCategoryAddition} colorScheme="purple">
-                Crear categoría
-            </Button>
-            {error != "" && <p>{error}</p>}
+            <Text className="cat_title">Agregar una categoría</Text>
+            <Card p={6}>
+                <FormControl>
+                    <FormLabel>Nueva categoría</FormLabel>
+                    <Input type="text" placeholder="Ingrese el nombre de la categoría que quiere crear" onChange={(e) => setNewCategoryName(e.target.value)} />
+                </FormControl>
+                <Button mt={3} onClick={handleCategoryAddition} colorScheme="purple">
+                    Crear categoría
+                </Button>
+                {error != "" && <p>{error}</p>}
+            </Card>
         </Box>
     );
 }

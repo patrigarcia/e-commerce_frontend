@@ -1,7 +1,9 @@
 import React, { useState, useContext } from "react";
-import { Box, Button, FormControl, FormLabel, Input, Text, VStack, InputGroup, InputLeftAddon } from "@chakra-ui/react";
+import { Box, Button, FormControl, FormLabel, Input, Text, VStack, InputGroup, InputLeftAddon, Select } from "@chakra-ui/react";
 import apiClient from "../../../api/apiClient";
 import { ProductsContext } from "../../../context/ProductsContext/ProductsState";
+import CategoryList from "../AddCategory/CategoryList";
+import "./AddProduct.scss";
 
 const AddProduct = () => {
     const [ProductInformation, setProductInformation] = useState({
@@ -16,11 +18,13 @@ const AddProduct = () => {
     const { getProducts } = useContext(ProductsContext);
 
     const manejarCambioEntrada = (evento) => {
-        const { name, value } = evento.target;
-        setProductInformation((infoAnterior) => ({
-            ...infoAnterior,
-            [name]: value,
-        }));
+        const { name, value } = evento.currentTarget;
+        setProductInformation({ ...ProductInformation, [name]: value });
+    };
+
+    const manejarCambioCategory = (evento) => {
+        const { value } = evento.currentTarget;
+        setProductInformation({ ...ProductInformation, categoryId: value });
     };
 
     const manejarCambioImagen = (evento) => {
@@ -57,38 +61,41 @@ const AddProduct = () => {
     };
 
     return (
-        <Box p={5} borderWidth="1px" borderRadius="lg">
-            <Text fontSize="20px" fontWeight="bold" mb={3}>
-                Agregar un producto
-            </Text>
-            <form onSubmit={manejarEnvio}>
-                <VStack align="start">
-                    <FormControl>
-                        <FormLabel>Categoría</FormLabel>
-                        <Input mb={3} type="text" name="categoryId" value={ProductInformation.categoryId} onChange={manejarCambioEntrada} />
-                        <FormLabel>Nombre</FormLabel>
-                        <Input mb={3} type="text" name="name" placeholder="Nombre del producto" value={ProductInformation.name} onChange={manejarCambioEntrada} />
-                        <FormLabel>Descripción</FormLabel>
-                        <Input mb={3} type="text" name="description" placeholder="Describe el producto" value={ProductInformation.description} onChange={manejarCambioEntrada} />
+        <>
+            <Text className="product_title">Agregar un producto</Text>
+            <Box className="product_form" p={5} borderWidth="1px" borderRadius="lg">
+                <form onSubmit={manejarEnvio}>
+                    <VStack align="start">
+                        <FormControl>
+                            <FormLabel>Categoría</FormLabel>
+                            <div mb={3} name="categoryId" value={ProductInformation.categoryId}>
+                                <CategoryList onSelectCategory={manejarCambioCategory} />
+                            </div>
 
-                        <FormLabel>Price</FormLabel>
-                        <InputGroup>
-                            <InputLeftAddon children="€" />
-                            <Input mb={3} type="price" name="price" value={ProductInformation.price} onChange={manejarCambioEntrada} />
-                        </InputGroup>
-                        <FormLabel>Stock</FormLabel>
-                        <Input mb={3} type="number" name="stock" value={ProductInformation.stock} onChange={manejarCambioEntrada} />
+                            <FormLabel>Nombre</FormLabel>
+                            <Input mb={3} type="text" name="name" placeholder="Nombre del producto" value={ProductInformation.name} onChange={manejarCambioEntrada} />
+                            <FormLabel>Descripción</FormLabel>
+                            <Input mb={3} type="text" name="description" placeholder="Describe el producto" value={ProductInformation.description} onChange={manejarCambioEntrada} />
 
-                        <FormLabel>Imagen</FormLabel>
-                        <Input type="file" name="image" onChange={manejarCambioImagen} />
-                    </FormControl>
+                            <FormLabel>Precio</FormLabel>
+                            <InputGroup>
+                                <InputLeftAddon children="€" />
+                                <Input mb={3} type="price" name="price" value={ProductInformation.price} onChange={manejarCambioEntrada} />
+                            </InputGroup>
+                            <FormLabel>Stock</FormLabel>
+                            <Input mb={3} type="number" name="stock" value={ProductInformation.stock} onChange={manejarCambioEntrada} />
 
-                    <Button colorScheme="purple" type="submit">
-                        Agregar
-                    </Button>
-                </VStack>
-            </form>
-        </Box>
+                            <FormLabel>Imagen</FormLabel>
+                            <Input className="upload_img" type="file" name="image" variant="unstyled" accept=".png, .jpg, .jpeg" onChange={manejarCambioImagen} />
+                        </FormControl>
+
+                        <Button colorScheme="purple" type="submit">
+                            Agregar
+                        </Button>
+                    </VStack>
+                </form>
+            </Box>
+        </>
     );
 };
 
