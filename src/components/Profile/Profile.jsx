@@ -7,7 +7,7 @@ const Profile = ({ user, token }) => {
 
     return (
         <>
-            <Heading as="h2" size="lg">
+            <Heading pt={8} ml={100} as="h2" size="lg">
                 Mi cuenta
             </Heading>
             <ProfileInfo />

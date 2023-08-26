@@ -1,21 +1,13 @@
-img{
-    width: 100%;
-    max-width: 100px;
-    height: auto;
-    padding: 5px;
-}
-
-.galeria{
-    padding: 1em;
-}
 
 
 .profile-container {
     align-items: flex-start;
+    width: 100%;
+    max-width: 1300px;
 
     & > .avatar-container {
         border-right: 1px solid #ccc;
-        margin-top: 2rem;
+       
         padding: 1rem;
         width: 25%;
 
@@ -34,13 +26,38 @@ img{
         padding: 4rem;
 
         & .avatar-image {
-            width: 100px; 
-            border-radius: 10px;
+            width: 200px; 
+            border-radius: 30px;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
         }
 
         & .avatar-icon {
-            font-size: 100px;
+            font-size: 200px;
             color: #ccc;
         }
     }
 }
+
+img{
+    width: 100%;
+    max-width: 150px;
+    height: auto;
+    padding: 5px;
+    border-radius: 20px;
+}
+
+.galery{
+    padding-left: 1em;
+}
+
+.welcome_text{
+    margin-left: 3%;
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+
+.select_text{
+    padding-left: 1.3em;
+}
+

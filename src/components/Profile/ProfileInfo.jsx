@@ -1,10 +1,10 @@
 import { useContext, useState } from "react";
 import { UserContext } from "../../context/UserContext/UserState";
-import { Grid, GridItem, Button, Flex, Box, VStack, Text, Image } from "@chakra-ui/react";
+import { Grid, GridItem, Flex, Box, VStack, Text, Image } from "@chakra-ui/react";
 import { FaUserCircle } from "react-icons/fa";
 import "./Profile.scss";
 
-const ProfileInfo = ({ setOrders }) => {
+const ProfileInfo = () => {
     const { user, setUser } = useContext(UserContext);
     const avatarRelativePath = "src/assets/avatars/";
     const avatarOptions = ["michael.png", "franklin.png", "trevor.png", "mario.png", "pacman.png", "subzero.png", "chunLi.png", "messi.png", "peach.png"];
@@ -16,13 +16,22 @@ const ProfileInfo = ({ setOrders }) => {
         setUser({ ...user, avatar: avatar });
     };
 
-    const fetchOrders = async () => {};
-
     return (
         <Flex className="profile-container">
             <Box as="aside" className="avatar-container">
-                <p>Selecciona tu avatar:</p>
-                <Grid className="galeria" templateColumns={{ base: "repeat(3, 1fr)", sm: "repeat(2, 1fr)", md: "repeat(3, 1fr)" }}>
+                <Box p={4} className="user-info-container">
+                    {user && (
+                        <VStack align="center" spacing={4}>
+                            <Text className="welcome_text">Bienvenid@, {user.name}!</Text>
+                            {selectedAvatar ? <Image src={selectedAvatar} alt="Selected Avatar" mb={8} className="avatar-image" /> : <FaUserCircle className="avatar-icon" />}
+                        </VStack>
+                    )}
+                </Box>
+                <Text as="b" className="select_text">
+                    Selecciona tu avatar:
+                </Text>
+                <Text className="select_text">(Puedes cambiarlo cuando quieras)</Text>
+                <Grid className="galery" templateColumns={{ base: "repeat(3, 1fr)", sm: "repeat(2, 1fr)", md: "repeat(3, 1fr)" }}>
                     {avatarOptions.map((avatar, index) => (
                         <GridItem key={index}>
                             <img
@@ -34,15 +43,6 @@ const ProfileInfo = ({ setOrders }) => {
                         </GridItem>
                     ))}
                 </Grid>
-            </Box>
-            <Box as="main" p={4} className="user-info-container">
-                {user && (
-                    <VStack align="start" spacing={4}>
-                        <Text>Bienvenid@, {user.name}!</Text>
-                        {selectedAvatar ? <Image src={selectedAvatar} alt="Selected Avatar" className="avatar-image" /> : <FaUserCircle className="avatar-icon" />}
-                        <Button onClick={fetchOrders}>Ver Pedidos</Button>
-                    </VStack>
-                )}
             </Box>
         </Flex>
     );
