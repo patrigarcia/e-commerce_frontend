@@ -19,7 +19,7 @@ const Header = () => {
         <Flex className="navbar" alignItems="flex-start" justifyContent="space-between" direction="row">
             <Flex alignItems="center">
                 <Link to="/">
-                    <Image className="logo" src={logo} boxSize="40px" />
+                    <Image className="logo_navbar" src={logo} boxSize="40px" />
                 </Link>
                 <Spacer />
 

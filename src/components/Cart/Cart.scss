@@ -1,3 +1,31 @@
-.cart-container{
-    margin: 7%;
+
+$color1: rgba(255, 0, 218, 0.5);
+$color2: rgba(37, 0, 255, 0.5);
+
+// .background-gradient {
+//     background: linear-gradient(to bottom right, $color1, $color2);
+// }
+
+.cart{
+   
+    background: linear-gradient(to bottom right, $color1, $color2);
+    align-items: center;
+    
+    .cart_title{
+        font-size: 1.2em;
+        font-weight: bold;
+        padding:  4%;
+       
+    }
+    .cart-container{
+ 
+    width: 80%;
+    background:gray;
+
+    
+    .cart_img{
+        width: 15%;
+        height: auto;
+    }
+}
 }
