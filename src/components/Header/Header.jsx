@@ -1,6 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Flex, Image, Input, IconButton, Text, Menu, MenuButton, MenuList, MenuItem, useBreakpointValue, Spacer, HStack, Divider } from "@chakra-ui/react";
+import {
+    Flex,
+    Image,
+    Input,
+    IconButton,
+    Text,
+    Menu,
+    MenuButton,
+    MenuList,
+    MenuItem,
+    useBreakpointValue,
+    Spacer,
+    HStack,
+    Divider,
+} from "@chakra-ui/react";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import { FaUser, FaShoppingCart, FaSearch, FaUserCog } from "react-icons/fa";
 import logo from "../../assets/logo.png";
@@ -8,12 +22,14 @@ import ColorModeSwitch from "../ColorModeSwitch/ColorModeSwitch";
 import Logout from "../Logout/Logout";
 import { useContext } from "react";
 import { UserContext } from "../../context/UserContext/UserState";
+import { ProductsContext } from "../../context/ProductsContext/ProductsState";
 import "./Header.scss";
 
 const Header = () => {
     const avatarRelativePath = "src/assets/avatars/";
     const isMobile = useBreakpointValue({ base: true, md: false });
     const { user } = useContext(UserContext);
+    const { cart } = useContext(ProductsContext);
 
     return (
         <Flex className="navbar" alignItems="flex-start" justifyContent="space-between" direction="row">
@@ -101,7 +117,10 @@ const Header = () => {
                         </Link>
                     )}
                     <Link className="carrito" to="/cart">
-                        <FaShoppingCart size={30} />
+                        <HStack>
+                            <FaShoppingCart size={30} />
+                            <Text as="span">{cart.length}</Text>
+                        </HStack>
                     </Link>
                     <ColorModeSwitch />
                 </Flex>
