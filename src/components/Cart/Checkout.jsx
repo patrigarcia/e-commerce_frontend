@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
 import { ProductsContext } from "../../context/ProductsContext/ProductsState";
-import { Box, Button, Flex, Text, Link, List, ListItem, Stack, VStack, CloseButton, Center, Card } from "@chakra-ui/react";
+import { Box, Button, Flex, Text, Link, List, ListItem, VStack, CloseButton, Card, HStack } from "@chakra-ui/react";
+import { FaTrashAlt } from "react-icons/fa";
 
 const Checkout = () => {
-    const { cart, clearCart } = useContext(ProductsContext);
+    const { cart, clearCart, addCart } = useContext(ProductsContext);
 
     const removeFromCart = (productId) => {
         const updatedCart = cart.filter((item) => item.id !== productId);
@@ -29,15 +30,17 @@ const Checkout = () => {
                                     </Text>
                                     <Text fontSize="lg">${product.price}</Text>
                                 </Box>
-                                <CloseButton color="red.500" onClick={() => removeFromCart(product.id)} />
+                                <CloseButton size="sm" onClick={() => removeFromCart(product.id)} />
                             </ListItem>
                         ))
                     )}
                 </List>
                 <Flex justifyContent="space-between">
-                    <Link color="purple.500" onClick={clearCart}>
-                        Vaciar carrito
-                    </Link>
+                    <HStack spacing={2}>
+                        <Link color="purple.500" onClick={clearCart}>
+                            <FaTrashAlt /> Vaciar carrito
+                        </Link>
+                    </HStack>
                     <Button colorScheme="purple" disabled>
                         Comprar
                     </Button>

@@ -23,7 +23,7 @@ const ProfileInfo = () => {
                     {user && (
                         <VStack align="center" spacing={4}>
                             <Text className="welcome_text">Bienvenid@, {user.name}!</Text>
-                            {selectedAvatar ? <Image src={selectedAvatar} alt="Selected Avatar" mb={8} className="avatar-image" /> : <FaUserCircle className="avatar-icon" />}
+                            {selectedAvatar ? <Image src={selectedAvatar} alt="Selected Avatar" mb={8} borderRadius="full" className="avatar-image" /> : <FaUserCircle className="avatar-icon" />}
                         </VStack>
                     )}
                 </Box>
@@ -34,7 +34,9 @@ const ProfileInfo = () => {
                 <Grid className="galery" templateColumns={{ base: "repeat(3, 1fr)", sm: "repeat(2, 1fr)", md: "repeat(3, 1fr)" }}>
                     {avatarOptions.map((avatar, index) => (
                         <GridItem key={index}>
-                            <img
+                            <Image
+                                w="100%"
+                                p={1}
                                 src={avatarRelativePath + avatar}
                                 alt={`Avatar ${index + 1}`}
                                 className={`avatar ${selectedAvatar === avatarRelativePath + avatar ? "selected" : ""}`}

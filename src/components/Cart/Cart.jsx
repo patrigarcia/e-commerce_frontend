@@ -39,7 +39,7 @@ const Cart = () => {
                                                 <Text fontSize="lg" mt={2}>
                                                     ${product.price}
                                                 </Text>
-                                                <IconButton icon={<CloseIcon />} colorScheme="red" aria-label="Eliminar" onClick={() => removeFromCart(product.id)} mt={2} />
+                                                <IconButton icon={<CloseIcon />} size="md" colorScheme="red" aria-label="Eliminar" onClick={() => removeFromCart(product.id)} mt={2} />
                                             </Box>
                                         </Flex>
                                     </Box>

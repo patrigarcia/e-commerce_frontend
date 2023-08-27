@@ -1,3 +1,5 @@
+$color1: rgba(255, 0, 218, 0.5);
+$color2: rgba(37, 0, 255, 0.5);
 
 
 .profile-container {
@@ -24,6 +26,7 @@
 
     & > .user-info-container {
         padding: 4rem;
+        background-color: linear-gradient(to bottom right, $color1, $color2);
 
         & .avatar-image {
             width: 200px; 
@@ -38,13 +41,7 @@
     }
 }
 
-img{
-    width: 100%;
-    max-width: 150px;
-    height: auto;
-    padding: 5px;
-    border-radius: 20px;
-}
+
 
 .galery{
     padding-left: 1em;
