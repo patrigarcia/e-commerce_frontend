@@ -46,7 +46,7 @@ const Products = () => {
                 <option value="priceLowToHigh">Ordenar por: Precio (menor a mayor)</option>
             </Select>
             <Flex flexDirection="column" alignItems="center">
-                <Grid templateColumns={{ base: "1fr", md: "repeat(3, 1fr)" }} gap={4}>
+                <Grid className="product-grid" gap={4}>
                     {sortedProducts.map((product) => (
                         <Card variant="filled" boxShadow="xl" key={product.id}>
                             <div className="product-card">
