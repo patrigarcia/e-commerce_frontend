@@ -1,5 +1,5 @@
 import React, { createContext, useReducer, useEffect } from "react";
-import axios from "axios";
+import apiClient from "../../api/apiClient";
 import ProductsReducer from "./ProductsReducer";
 
 const cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -9,20 +9,29 @@ const initialState = {
     cart: cart,
 };
 
-const API_URL = "http://192.168.1.139:9001";
 export const ProductsContext = createContext(initialState);
 
 export const ProductsProvider = ({ children }) => {
     const [state, dispatch] = useReducer(ProductsReducer, initialState);
 
     const getProducts = async () => {
-        const res = await axios.get(API_URL + "/products/categories");
+        const res = await apiClient.get("/products/categories");
         dispatch({
             type: "GET_PRODUCTS",
             payload: res.data,
         });
         return res;
     };
+
+    const getProductsByCategory = async (filterQuery) => {
+        const res = await apiClient.get(`/categories/${filterQuery.categoryId}`);
+        dispatch({
+            type: "GET_PRODUCTS_BY_CATEGORY",
+            payload: res.data,
+        });
+        return res;
+    };
+
     useEffect(() => {
         const savedCart = JSON.parse(localStorage.getItem("cart")) || [];
         dispatch({
@@ -48,7 +57,7 @@ export const ProductsProvider = ({ children }) => {
 
     const getProductById = async (productId) => {
         try {
-            const res = await axios.get(API_URL + `/products/id/${productId}`);
+            const res = await apiClient.get(`/products/id/${productId}`);
             return res.data;
         } catch (error) {
             console.error("Error fetching product by ID:", error);
@@ -65,6 +74,7 @@ export const ProductsProvider = ({ children }) => {
                 addCart,
                 clearCart,
                 getProductById,
+                getProductsByCategory,
             }}
         >
             {children}

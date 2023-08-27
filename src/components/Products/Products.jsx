@@ -6,19 +6,19 @@ import { getImageURL } from "../../api/apiClient";
 import { Link } from "react-router-dom";
 import "./Products.scss";
 
-const Products = () => {
-    const { getProducts, products, addCart } = useContext(ProductsContext);
-
+const Products = ({ filterQuery }) => {
+    const { getProducts, products, addCart, getProductsByCategory } = useContext(ProductsContext);
     const [favorites, setFavorites] = useState({});
     const [sortedProducts, setSortedProducts] = useState([]);
     const [sortBy, setSortBy] = useState("priceHighToLow");
 
     useEffect(() => {
-        getProducts();
-    }, []);
+        filterQuery.categoryId ? getProductsByCategory(filterQuery) : getProducts();
+    }, [filterQuery]);
 
     useEffect(() => {
-        const sorted = [...products].sort((a, b) => {
+        let unsortedProducts = products[0]?.Products ? products[0].Products : [...products];
+        const sorted = unsortedProducts.sort((a, b) => {
             if (sortBy === "priceLowToHigh") {
                 return a.price - b.price;
             } else {
@@ -69,7 +69,12 @@ const Products = () => {
                                             Ver detalles
                                         </Button>
                                     </Link>
-                                    <IconButton icon={<FaHeart />} colorScheme={favorites[product.id] ? "red" : "gray"} onClick={() => toggleFavorite(product.id)} aria-label="Marcar como favorito" />
+                                    <IconButton
+                                        icon={<FaHeart />}
+                                        colorScheme={favorites[product.id] ? "red" : "gray"}
+                                        onClick={() => toggleFavorite(product.id)}
+                                        aria-label="Marcar como favorito"
+                                    />
                                 </Flex>
                             </div>
                         </Card>

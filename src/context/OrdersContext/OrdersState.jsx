@@ -1,7 +1,5 @@
 import { createContext } from "react";
-import axios from "axios";
-
-const API_URL = "http://192.168.1.139:9001";
+import apiClient from "../../api/apiClient";
 
 export const OrdersContext = createContext();
 
@@ -9,8 +7,8 @@ export const OrdersProvider = ({ children }) => {
     const createOrder = async (cart) => {
         const token = JSON.parse(localStorage.getItem("token"));
         try {
-            await axios.post(
-                API_URL + "/orders/productId",
+            await apiClient.post(
+                "/orders/productId",
                 { productIds: cart },
                 {
                     headers: {

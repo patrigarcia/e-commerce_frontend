@@ -4,7 +4,12 @@ const useCategories = () => {
     const addCategory = (category) => {
         apiClient.post("/categories", { name: category });
     };
-    return { addCategory };
+
+    const fetchCategories = () => {
+        return apiClient.get("/categories");
+    };
+
+    return { addCategory, fetchCategories };
 };
 
 export default useCategories;
