@@ -28,12 +28,11 @@ const Cart = () => {
                     <Text>No hay productos en el carrito</Text>
                 ) : (
                     <>
-                        <Table variant="simple" mt={3}>
+                        <Table variant="unstyled">
                             <Thead>
                                 <Tr>
                                     <Th>Producto</Th>
                                     <Th>Precio</Th>
-                                    <Th>Acciones</Th>
                                 </Tr>
                             </Thead>
                             <Tbody>
@@ -41,27 +40,28 @@ const Cart = () => {
                                     <Tr key={product.id}>
                                         <Td display="flex" alignItems="center">
                                             <Image className="cart_img" src={getImageURL(product.imagePath)} alt={product.name} mr={3} />
-                                            <Text fontSize="lg">
+                                            <Text as="b" fontSize="lg">
                                                 {product.name}
+                                            </Text>
+                                            <Text>
                                                 <br /> {product.description}
                                             </Text>
                                         </Td>
                                         <Td>${product.price}</Td>
-                                        <Td>
-                                            <Button colorScheme="red" onClick={() => removeFromCart(product.id)}>
-                                                Eliminar
-                                            </Button>
-                                        </Td>
+
+                                        <Button colorScheme="red" onClick={() => removeFromCart(product.id)}>
+                                            Eliminar
+                                        </Button>
                                     </Tr>
                                 ))}
                             </Tbody>
                         </Table>
-                        <Button colorScheme="purple" onClick={handleBuy} mt={3}>
-                            Comprar
-                        </Button>
                     </>
                 )}
             </Box>
+            <Button colorScheme="purple" onClick={handleBuy} mt={3}>
+                Comprar
+            </Button>
         </Flex>
     );
 };

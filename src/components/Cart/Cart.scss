@@ -1,31 +1,56 @@
-
 $color1: rgba(255, 0, 218, 0.5);
 $color2: rgba(37, 0, 255, 0.5);
+$color-fondo: rgba(255, 255, 255, 0.3);
 
-// .background-gradient {
-//     background: linear-gradient(to bottom right, $color1, $color2);
-// }
-
-.cart{
-   
+.cart {
     background: linear-gradient(to bottom right, $color1, $color2);
     align-items: center;
+    padding: 20px;
     
-    .cart_title{
+    .cart_title {
         font-size: 1.2em;
         font-weight: bold;
-        padding:  4%;
-       
+        padding-left: 80px; /* Alinea con el margen izquierdo de la tabla */
+        text-align: left;
+        margin-bottom: 10px;
     }
-    .cart-container{
- 
-    width: 80%;
-    background: black;
-
     
-    .cart_img{
-        width: 15%;
-        height: auto;
+    .cart-container {
+        width: 50%;
+        background: $color-fondo;
+        padding: 20px;
+        border-radius: 8px;
+        
+        .cart_img {
+            width: 15%;
+            height: auto;
+        }
+        
+        table {
+            width: 100%;
+            text-align: center;
+            
+            th, td {
+                vertical-align: middle;
+            }
+            
+            th:nth-child(1) {
+                text-align: left;
+            }
+            
+            td:nth-child(3) {
+                text-align: center;
+                
+                button {
+                    margin: 0 auto; /* Centra el botón en las celdas */
+                }
+            }
+        }
+        
+        .chakra-button {
+            margin-right: 0; /* Elimina el margen derecho del botón Comprar */
+            margin-left: auto; /* Alinea el botón Comprar a la derecha */
+            margin-top: 10px;
+        }
     }
-}
 }

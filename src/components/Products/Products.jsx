@@ -4,6 +4,7 @@ import { Flex, Grid, Image, VStack, Text, Button, Card, IconButton, Select, Box 
 import { FaHeart } from "react-icons/fa";
 import { getImageURL } from "../../api/apiClient";
 import { Link } from "react-router-dom";
+
 import "./Products.scss";
 
 const Products = ({ filterQuery }) => {
