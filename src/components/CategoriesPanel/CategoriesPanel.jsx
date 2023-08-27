@@ -1,5 +1,5 @@
 import { Button, HStack, Heading, List, ListItem } from "@chakra-ui/react";
-import { FaPlusCircle } from "react-icons/fa";
+import { BiSolidGame } from "react-icons/bi";
 import { useState, useEffect } from "react";
 import useCategories from "../../hooks/useCategories";
 
@@ -20,10 +20,10 @@ const CategoriesPanel = ({ onSelectCategory, selectedCategoryId }) => {
                 {categories.map((category) => (
                     <ListItem key={category.id}>
                         <HStack paddingY="10px" paddingX="2px">
-                            <FaPlusCircle />
+                            {category.id === selectedCategoryId && <BiSolidGame />} {/* Ícono se muestra solo si el id coincide */}
                             <Button
                                 fontWeight={category.id === selectedCategoryId ? "bold" : "normal"}
-                                colorScheme={category.id === selectedCategoryId ? "whatsapp" : "normal"}
+                                colorScheme={category.id === selectedCategoryId ? "purple" : "normal"}
                                 fontSize="lg"
                                 variant="link"
                                 onClick={() => onSelectCategory(category)}

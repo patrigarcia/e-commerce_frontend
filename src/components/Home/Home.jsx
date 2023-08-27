@@ -12,7 +12,7 @@ const Home = () => {
 
     return (
         <>
-            <div>
+            <Box>
                 <ImageBar width="100%" />
                 <Flex>
                     <Box as="aside" w="200px" p={4} borderRight="1px solid #ccc" mt={10}>
@@ -22,14 +22,14 @@ const Home = () => {
                         />
                     </Box>
                     <Box flex="1" p={4} mt={10}>
-                        <main>
+                        <Box as="main">
                             <CategoryHeading filterQuery={filterQuery} />
                             <Divider mb={4} />
                             <Products filterQuery={filterQuery} />
-                        </main>
+                        </Box>
                     </Box>
                 </Flex>
-            </div>
+            </Box>
         </>
     );
 };

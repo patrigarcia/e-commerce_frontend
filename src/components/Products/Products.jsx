@@ -4,7 +4,6 @@ import { Flex, Grid, Image, VStack, Text, Button, Card, IconButton, Select, Box 
 import { FaHeart } from "react-icons/fa";
 import { getImageURL } from "../../api/apiClient";
 import { Link } from "react-router-dom";
-
 import "./Products.scss";
 
 const Products = ({ filterQuery }) => {
@@ -62,7 +61,7 @@ const Products = ({ filterQuery }) => {
                     <Grid className="product-grid" gap={4}>
                         {currentProducts.map((product) => (
                             <Card variant="filled" boxShadow="xl" key={product.id}>
-                                <div className="product-card">
+                                <Box className="product-card">
                                     <VStack spacing={2} align="start">
                                         <Box className="image-container">
                                             <Image className="product-image" src={getImageURL(product.imagePath)} alt={product.name} rounded="lg" />
@@ -89,7 +88,7 @@ const Products = ({ filterQuery }) => {
                                             aria-label="Marcar como favorito"
                                         />
                                     </Flex>
-                                </div>
+                                </Box>
                             </Card>
                         ))}
                     </Grid>
@@ -97,12 +96,7 @@ const Products = ({ filterQuery }) => {
                         <Button variant="ghost" colorScheme="purple" onClick={() => paginate(currentPage - 1)} isDisabled={currentPage === 1} mr={1}>
                             Anterior
                         </Button>
-                        <Button
-                            variant="ghost"
-                            colorScheme="purple"
-                            onClick={() => paginate(currentPage + 1)}
-                            isDisabled={indexOfLastProduct >= totalProducts}
-                        >
+                        <Button variant="ghost" colorScheme="purple" onClick={() => paginate(currentPage + 1)} isDisabled={indexOfLastProduct >= totalProducts}>
                             Siguiente
                         </Button>
                     </Box>

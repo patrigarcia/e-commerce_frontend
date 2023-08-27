@@ -1,8 +1,10 @@
 import React, { useContext } from "react";
 import { ProductsContext } from "../../context/ProductsContext/ProductsState";
 import { OrdersContext } from "../../context/OrdersContext/OrdersState";
-import { Box, Button, Flex, Image, Table, Tbody, Td, Text, Th, Thead, Tr } from "@chakra-ui/react";
+import { Box, Flex, Image, Text, IconButton, Stack, Grid } from "@chakra-ui/react";
 import { getImageURL } from "../../api/apiClient";
+import { CloseIcon } from "@chakra-ui/icons";
+import Checkout from "./Checkout";
 import "./Cart.scss";
 
 const Cart = () => {
@@ -15,54 +17,38 @@ const Cart = () => {
         updatedCart.forEach((item) => addCart(item));
     };
 
-    const handleBuy = () => {
-        const productIds = cart.map((item) => item.id);
-        createOrder(productIds);
-    };
-
     return (
-        <Flex className="cart" direction="column">
-            <Text className="cart_title">Tu carrito</Text>
-            <Box className="cart-container">
-                {cart.length === 0 ? (
-                    <Text>No hay productos en el carrito</Text>
-                ) : (
-                    <>
-                        <Table variant="unstyled">
-                            <Thead>
-                                <Tr>
-                                    <Th>Producto</Th>
-                                    <Th>Precio</Th>
-                                </Tr>
-                            </Thead>
-                            <Tbody>
-                                {cart.map((product) => (
-                                    <Tr key={product.id}>
-                                        <Td display="flex" alignItems="center">
-                                            <Image className="cart_img" src={getImageURL(product.imagePath)} alt={product.name} mr={3} />
-                                            <Text as="b" fontSize="lg">
+        <>
+            <Flex className="cart" direction="row">
+                <Text className="cart_title">Tu carrito</Text>
+                <Grid templateColumns={{ base: "1fr", md: "3fr 2fr" }} gap={6}>
+                    <Stack spacing={3} mt={3}>
+                        {cart.length === 0 ? (
+                            <Text>No hay productos en el carrito</Text>
+                        ) : (
+                            cart.map((product) => (
+                                <Box key={product.id} borderWidth="1px" borderRadius="lg" overflow="hidden" boxShadow="md">
+                                    <Flex direction={{ base: "column", md: "row" }}>
+                                        <Image src={getImageURL(product.imagePath)} alt={product.name} objectFit="cover" boxSize={{ base: "100%", md: "150px" }} />
+                                        <Box p={4} flex="1">
+                                            <Text fontSize="lg" fontWeight="bold">
                                                 {product.name}
                                             </Text>
-                                            <Text>
-                                                <br /> {product.description}
+                                            <Text>{product.description}</Text>
+                                            <Text fontSize="lg" mt={2}>
+                                                ${product.price}
                                             </Text>
-                                        </Td>
-                                        <Td>${product.price}</Td>
-
-                                        <Button colorScheme="red" onClick={() => removeFromCart(product.id)}>
-                                            Eliminar
-                                        </Button>
-                                    </Tr>
-                                ))}
-                            </Tbody>
-                        </Table>
-                    </>
-                )}
-            </Box>
-            <Button colorScheme="purple" onClick={handleBuy} mt={3}>
-                Comprar
-            </Button>
-        </Flex>
+                                            <IconButton icon={<CloseIcon />} colorScheme="red" aria-label="Eliminar" onClick={() => removeFromCart(product.id)} mt={2} />
+                                        </Box>
+                                    </Flex>
+                                </Box>
+                            ))
+                        )}
+                    </Stack>
+                </Grid>
+            </Flex>
+            <Checkout />
+        </>
     );
 };
 
