@@ -20,7 +20,7 @@ const CategoriesPanel = ({ onSelectCategory, selectedCategoryId }) => {
                 {categories.map((category) => (
                     <ListItem key={category.id}>
                         <HStack paddingY="10px" paddingX="2px">
-                            {category.id === selectedCategoryId && <BiSolidGame />} {/* Ícono se muestra solo si el id coincide */}
+                            {category.id === selectedCategoryId && <BiSolidGame />}
                             <Button
                                 fontWeight={category.id === selectedCategoryId ? "bold" : "normal"}
                                 colorScheme={category.id === selectedCategoryId ? "purple" : "normal"}
