@@ -1,5 +1,5 @@
-$color1: rgba(255, 0, 218, 0.5);
-$color2: rgba(37, 0, 255, 0.5);
+$color1: rgba(255, 0, 218, 1);
+$color2: rgba(37, 0, 255, 1);
 $color-fondo: rgba(255, 255, 255, 0.3);
 
 
@@ -9,6 +9,7 @@ $color-fondo: rgba(255, 255, 255, 0.3);
     .cart_title{
         padding-left: 3%;
         margin-top: 2%;
+        margin-bottom: 2%;
         font-size: 1.3em;
         font-weight: 500;
     }

@@ -9,7 +9,7 @@ import Login from "./components/Login/Login";
 import PrivateRoutes from "./components/Layout/PrivateRoutes";
 import Profile from "./components/Profile/Profile";
 import SignUp from "./components/SignUp/SignUp";
-import Cart from "./components/Cart/Cart";
+import Cart from "./components/Cart/Cart/Cart";
 import ProductPage from "./components/ProductPage/ProductPage";
 
 const router = createBrowserRouter([

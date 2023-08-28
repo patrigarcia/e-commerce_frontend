@@ -14,8 +14,8 @@ const Checkout = () => {
 
     return (
         <>
-            <Flex mt={5} h="fit-content">
-                <Card w="50%" p={4} mt={12} borderRadius="lg" boxShadow="lg">
+            <Flex w="100%" mt={5} h="fit-content">
+                <Card w="50%" p={4} mt={12} mb={8} borderRadius="lg" boxShadow="lg">
                     <VStack align="stretch" spacing={4}>
                         <Text fontSize="xl">Resumen</Text>
                         <List spacing={3}>
@@ -28,7 +28,7 @@ const Checkout = () => {
                                             <Text fontSize="md" fontWeight="bold">
                                                 {product.name}
                                             </Text>
-                                            <Text fontSize="lg">${product.price}</Text>
+                                            <Text fontSize="lg">{product.price}€</Text>
                                         </Box>
                                     </ListItem>
                                 ))
@@ -46,7 +46,7 @@ const Checkout = () => {
                         <Button colorScheme="purple" disabled>
                             Comprar
                         </Button>
-                        <Link mt={4} color="red.500" onClick={clearCart}>
+                        <Link a mt={4} color="red.500" onClick={clearCart}>
                             Vaciar carrito
                         </Link>
                     </VStack>
