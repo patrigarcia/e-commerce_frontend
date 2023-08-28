@@ -1,20 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import {
-    Flex,
-    Image,
-    Input,
-    IconButton,
-    Text,
-    Menu,
-    MenuButton,
-    MenuList,
-    MenuItem,
-    useBreakpointValue,
-    Spacer,
-    HStack,
-    Divider,
-} from "@chakra-ui/react";
+import { Flex, Image, Input, IconButton, Text, Menu, MenuButton, MenuList, MenuItem, useBreakpointValue, Spacer, HStack, Divider, Badge } from "@chakra-ui/react";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import { FaUser, FaShoppingCart, FaSearch, FaUserCog } from "react-icons/fa";
 import logo from "../../assets/logo.png";
@@ -119,7 +105,9 @@ const Header = () => {
                     <Link className="carrito" to="/cart">
                         <HStack>
                             <FaShoppingCart size={30} />
-                            <Text as="span">{cart.length}</Text>
+                            <Badge colorScheme="red" borderRadius="full" px="2">
+                                {cart.length}
+                            </Badge>
                         </HStack>
                     </Link>
                     <ColorModeSwitch />

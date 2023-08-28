@@ -3,9 +3,10 @@ import { ProductsContext } from "../../context/ProductsContext/ProductsState";
 import { OrdersContext } from "../../context/OrdersContext/OrdersState";
 import { Box, Flex, Image, Text, IconButton, Stack, Grid, Card } from "@chakra-ui/react";
 import { getImageURL } from "../../api/apiClient";
-import { CloseIcon } from "@chakra-ui/icons";
+
 import Checkout from "./Checkout";
 import "./Cart.scss";
+import { FaTrashAlt } from "react-icons/fa";
 
 const Cart = () => {
     const { cart, clearCart, addCart } = useContext(ProductsContext);
@@ -19,10 +20,10 @@ const Cart = () => {
 
     return (
         <>
-            <Grid templateColumns={{ base: "1fr", md: "3fr 2fr" }} gap={6}>
-                <Flex className="cart" direction="row">
-                    <Card w="90%" ml={20}>
-                        <Text className="cart_title">Tu carrito</Text>
+            <Grid className="cart_bg" templateColumns={{ base: "1fr", md: "3fr 2fr" }}>
+                <Flex className="cart" direction="row" mb={10}>
+                    <Card w="70%" ml="24%">
+                        <Text className="cart_title">Estos productos están en tu carrito:</Text>
                         <Stack spacing={3} mt={3}>
                             {cart.length === 0 ? (
                                 <Text>No hay productos en el carrito</Text>
@@ -39,7 +40,16 @@ const Cart = () => {
                                                 <Text fontSize="lg" mt={2}>
                                                     ${product.price}
                                                 </Text>
-                                                <IconButton icon={<CloseIcon />} size="md" colorScheme="red" aria-label="Eliminar" onClick={() => removeFromCart(product.id)} mt={2} />
+                                                <IconButton
+                                                    icon={<FaTrashAlt />}
+                                                    size="sm"
+                                                    colorScheme="purple"
+                                                    aria-label="Eliminar"
+                                                    position="absolute"
+                                                    right={5}
+                                                    onClick={() => removeFromCart(product.id)}
+                                                    mt={2}
+                                                />
                                             </Box>
                                         </Flex>
                                     </Box>
