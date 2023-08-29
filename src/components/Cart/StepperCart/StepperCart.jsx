@@ -9,15 +9,15 @@ const steps = [
     { title: "Finalizar", description: "Pago" },
 ];
 
-const StepperCart = () => {
-    const { activeStep } = useSteps({
-        index: 1,
+const StepperCart = ({ buyStep }) => {
+    useSteps({
+        index: buyStep,
         count: steps.length,
     });
 
     return (
         <Flex mt={5} mb={5} justifyContent="center">
-            <Stepper colorScheme="purple" index={activeStep}>
+            <Stepper colorScheme="purple" index={buyStep}>
                 {steps.map((step, index) => (
                     <Step key={index}>
                         <StepIndicator>

@@ -23,7 +23,7 @@ const SignUp = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post("/users", formData);
+            const response = await axios.post("/", formData);
             console.log(response.data.message);
         } catch (error) {
             console.error("Error al crear al usuario:", error);

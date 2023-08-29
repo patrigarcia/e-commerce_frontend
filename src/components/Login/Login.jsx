@@ -58,7 +58,7 @@ const LoginPage = () => {
 
                         <Box mb={2}>
                             <span>Aún no tienes cuenta? </span>
-                            <ChakraLink as={Link} to="/register" className="link">
+                            <ChakraLink as={Link} to="/signup" className="link">
                                 Regístrate aquí
                             </ChakraLink>
                         </Box>

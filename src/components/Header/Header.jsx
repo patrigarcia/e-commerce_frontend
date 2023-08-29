@@ -80,28 +80,33 @@ const Header = () => {
                     <IconButton aria-label="Buscar" icon={<FaSearch />} variant="ghost" size="md" />
 
                     {user ? (
-                        <Link className="link" to="/profile">
-                            <HStack>
-                                <Image src={avatarRelativePath + user.avatar} alt="Avatar" boxSize="50px" borderRadius="50%" />
-                                <Text>Mi cuenta</Text>
-                            </HStack>
-                        </Link>
+                        <>
+                            {user.role === "admin" ? (
+                                <Link className="link" to="/admin">
+                                    <HStack>
+                                        <FaUserCog size={30} />
+                                    </HStack>
+                                </Link>
+                            ) : (
+                                <Link className="link" to="/profile">
+                                    <HStack>
+                                        <Image src={avatarRelativePath + user.avatar} alt="Avatar" boxSize="50px" borderRadius="50%" />
+                                        <Text>Mi cuenta</Text>
+                                    </HStack>
+                                </Link>
+                            )}
+
+                            <Logout />
+                        </>
                     ) : (
                         <Link className="link" to="/login">
                             <HStack>
-                                <FaUser size={30} />
+                                <FaUser size={25} />
                                 <Text>Iniciar sesión</Text>
                             </HStack>
                         </Link>
                     )}
 
-                    {user && <Logout />}
-
-                    {user && user.role === "admin" && (
-                        <Link className="link" to="/admin">
-                            <FaUserCog size={30} />
-                        </Link>
-                    )}
                     <Link className="carrito" to="/cart">
                         <HStack>
                             <FaShoppingCart size={30} />

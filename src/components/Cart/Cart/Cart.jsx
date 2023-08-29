@@ -7,15 +7,16 @@ import AdressCart from "../AdressCart/AdressCart";
 import "./Cart.scss";
 
 const Cart = () => {
-    const [isBuying, setIsBuying] = useState(false);
+    const [buyStep, setBuyStep] = useState(0);
 
     return (
         <>
-            <StepperCart />
+            <StepperCart buyStep={buyStep} />
             <Grid className="cart_bg" templateColumns={{ base: "1fr", md: "3fr 2fr" }}>
-                {isBuying ? null : <ProductsCart />}
-                {isBuying ? <AdressCart /> : null}
-                <Checkout selection={() => setIsBuying(true)} />
+                {buyStep == 0 && <ProductsCart />}
+                {buyStep == 1 && <AdressCart />}
+                {/* {buyStep == 2 && <Orders />} */}
+                <Checkout selection={() => setBuyStep(buyStep + 1)} />
             </Grid>
         </>
     );

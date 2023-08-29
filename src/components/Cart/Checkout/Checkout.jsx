@@ -3,7 +3,7 @@ import { ProductsContext } from "../../../context/ProductsContext/ProductsState"
 import { Button, Flex, Text, Link, List, ListItem, VStack, Card, HStack } from "@chakra-ui/react";
 import "./Checkout.scss";
 
-const Checkout = ({ aaaa }) => {
+const Checkout = ({ selection }) => {
     const { cart, clearCart } = useContext(ProductsContext);
     const [isNext, setIsNext] = useState(false);
     let totalPrice = 0;
@@ -50,7 +50,9 @@ const Checkout = ({ aaaa }) => {
                         </Flex>
                         {isNext ? (
                             <>
-                                <Button colorScheme="purple">Comprar</Button>
+                                <Button colorScheme="purple" onClick={handleNextStep}>
+                                    Comprar
+                                </Button>
                             </>
                         ) : (
                             <Button colorScheme="purple" onClick={handleNextStep}>

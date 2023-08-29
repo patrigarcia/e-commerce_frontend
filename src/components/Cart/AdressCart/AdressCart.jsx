@@ -3,7 +3,7 @@ import { Box, Button, Input, FormControl, FormLabel, Textarea, Heading, Alert, A
 import { UserContext } from "../../../context/UserContext/UserState";
 import apiClient from "../../../api/apiClient";
 
-const AdressCart = () => {
+const AdressCart = ({ setActiveNextStep }) => {
     const { user } = useContext(UserContext);
     const [street, setStreet] = useState("");
     const [number, setNumber] = useState("");
@@ -28,6 +28,7 @@ const AdressCart = () => {
                 setMessage("Dirección creada con éxito");
                 setError("");
                 document.getElementById("address-form").reset();
+                setActiveNextStep(2);
             } else {
                 setError("Error al crear la dirección");
                 setMessage("");
