@@ -17,7 +17,7 @@ const ProductsCart = () => {
     return (
         <>
             <Flex className="cart" direction="row" mb={10}>
-                <Card w="70%" ml="24%">
+                <Card w="70%" ml="15%">
                     <Text className="cart_title">Estos productos están en tu carrito:</Text>
                     <Divider colorScheme="purple" />
                     <Stack spacing={3} mt={3}>
