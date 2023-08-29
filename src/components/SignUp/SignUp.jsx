@@ -1,17 +1,23 @@
-import React, { useState } from "react";
-import { Button, FormControl, FormLabel, Input, VStack, Card, Center } from "@chakra-ui/react";
-import axios from "axios";
+import { useState } from "react";
+import { Button, FormControl, FormLabel, Input, VStack, Card, Center, Spinner } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
+import apiClient from "../../api/apiClient";
 import "./SignUp.scss";
 
+const initialState = {
+    name: "",
+    surname: "",
+    mail: "",
+    tel: "",
+    password: "",
+    role: "",
+    avatar: "michael.png",
+};
+
 const SignUp = () => {
-    const [formData, setFormData] = useState({
-        name: "",
-        surname: "",
-        mail: "",
-        tel: "",
-        password: "",
-        role: "",
-    });
+    const [isLoading, setLoading] = useState(false);
+    const [formData, setFormData] = useState(initialState);
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -20,12 +26,18 @@ const SignUp = () => {
             [name]: value,
         }));
     };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setLoading(true);
         try {
-            const response = await axios.post("/", formData);
-            console.log(response.data.message);
+            await apiClient.post("/users", { ...formData, avatar: "michael.png" });
+            setFormData(initialState);
+            setTimeout(() => {
+                navigate("/login");
+            }, 2000);
         } catch (error) {
+            setLoading(false);
             console.error("Error al crear al usuario:", error);
         }
     };
@@ -60,9 +72,8 @@ const SignUp = () => {
                             <FormLabel>Contraseña</FormLabel>
                             <Input type="password" name="password" value={formData.password} onChange={handleChange} required />
                         </FormControl>
-
-                        <Button type="submit" colorScheme="purple">
-                            Registrarme
+                        <Button type="submit" colorScheme="purple" isLoading={isLoading} loadingText="Registrándote..." width="100%" mb={4}>
+                            {isLoading ? <Spinner size="sm" mr={2} /> : "Registrarme"}
                         </Button>
                     </form>
                 </VStack>
