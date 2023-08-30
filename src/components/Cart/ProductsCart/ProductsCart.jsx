@@ -16,10 +16,10 @@ const ProductsCart = () => {
 
     return (
         <>
-            <Flex className="cart" direction="row" mb={10}>
-                <Card w="70%" ml="15%">
+            <Flex mb="10vh" mt="8vh">
+                <Card w="75%" ml="15vh" h="fit-content">
                     <Text className="cart_title">Estos productos están en tu carrito:</Text>
-                    <Divider colorScheme="purple" />
+                    <Divider w="90%" alignSelf="center" />
                     <Stack spacing={3} mt={3}>
                         {cart.length === 0 ? (
                             <Text pl={4}>No hay productos en el carrito</Text>
@@ -27,7 +27,7 @@ const ProductsCart = () => {
                             cart.map((product) => (
                                 <Box key={product.id} borderRadius="lg" overflow="hidden" boxShadow="md">
                                     <Flex direction={{ base: "column", md: "row" }}>
-                                        <Image className="cart_img" src={getImageURL(product.imagePath)} alt={product.name} objectFit="cover" boxSize={{ base: "100%", md: "150px" }} />
+                                        <Image className="cart_img" src={getImageURL(product.imagePath)} alt={product.name} objectFit="cover" boxSize={{ base: "100%", md: "150px" }} m="4%" />
                                         <Box p={4} flex="1" position="relative">
                                             <VStack align="flex-start" w="70%">
                                                 <Text fontSize="lg" fontWeight="bold">

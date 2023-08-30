@@ -3,8 +3,11 @@ $color2: rgba(37, 0, 255, 1);
 $color-fondo: rgba(255, 255, 255, 0.3);
 
 
+
+
 .cart_bg{
     background: linear-gradient(to bottom right, $color1, $color2);
-
-   
+    width: 100vw;
+  height: fit-content;
+  
 }
