@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { ProductsContext } from "../../../context/ProductsContext/ProductsState";
-import { Button, Flex, Text, Link, List, ListItem, VStack, Card, HStack, Center } from "@chakra-ui/react";
+import { Button, Flex, Text, Link, List, ListItem, VStack, Card, HStack } from "@chakra-ui/react";
 import apiClient from "../../../api/apiClient";
 import "./Checkout.scss";
 

@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { ProductsContext } from "../../../context/ProductsContext/ProductsState";
-import { Box, Button, FormControl, FormLabel, Input, Text, VStack, InputGroup, InputLeftAddon, Menu, MenuButton, MenuList, MenuItem } from "@chakra-ui/react";
+import { Box, Button, FormControl, FormLabel, Input, Text, VStack, InputGroup, InputLeftAddon, Menu, MenuButton, MenuList, MenuItem, Card } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import apiClient from "../../../api/apiClient";
 
@@ -60,7 +60,7 @@ const UpdateProduct = () => {
     };
 
     return (
-        <Box p={5} borderWidth="1px" borderRadius="lg">
+        <Card p={5} w="60%" mt="20vh" ml="10vh">
             <Text fontSize="20px" fontWeight="bold" mb={3}>
                 Actualizar un producto
             </Text>
@@ -111,7 +111,7 @@ const UpdateProduct = () => {
                     </Button>
                 </VStack>
             </form>
-        </Box>
+        </Card>
     );
 };
 

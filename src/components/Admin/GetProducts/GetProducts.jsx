@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Box, Text, Table, Thead, Tbody, Tr, Th, Td, Flex } from "@chakra-ui/react";
+import { Box, Text, Table, Thead, Tbody, Tr, Th, Td, Flex, Card, Button, Grid } from "@chakra-ui/react";
 import apiClient from "../../../api/apiClient";
-import ReactPaginate from "react-paginate";
 import "./GetProducts.scss";
 
 const GetProducts = () => {
@@ -40,11 +39,16 @@ const GetProducts = () => {
     const indexOfLastProduct = (currentPage + 1) * productsPerPage;
     const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
     const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
+    const totalProducts = products.length;
+
+    const paginate = (pageNumber) => {
+        setCurrentPage(pageNumber);
+    };
 
     return (
-        <Flex direction="column">
+        <Card w="80%" p="3%" mt="10%" ml="9%" mb="5%">
             <Text className="product_title">Lista de Productos</Text>
-            <Box className="product_list">
+            <Box>
                 <Table variant="striped" colorScheme="purple">
                     <Thead>
                         <Tr>
@@ -64,25 +68,21 @@ const GetProducts = () => {
                                 <Td>{product.description}</Td>
                                 <Td>{categoryMap[product.categoryId] || "Sin categoría"}</Td>
                                 <Td>{product.stock}</Td>
-                                <Td>€{product.price}</Td>
+                                <Td>{product.price}€</Td>
                             </Tr>
                         ))}
                     </Tbody>
                 </Table>
             </Box>
-            <ReactPaginate
-                previousLabel={"Anterior"}
-                nextLabel={"Siguiente"}
-                breakLabel={"..."}
-                breakClassName={"break-me"}
-                pageCount={Math.ceil(products.length / productsPerPage)}
-                marginPagesDisplayed={2}
-                pageRangeDisplayed={5}
-                onPageChange={(selected) => setCurrentPage(selected.selected)}
-                containerClassName={"pagination"}
-                activeClassName={"active"}
-            />
-        </Flex>
+            <Box mt={8} display="flex" justifyContent="center">
+                <Button variant="ghost" colorScheme="purple" onClick={() => paginate(currentPage - 1)} isDisabled={currentPage === 0} mr={1}>
+                    Anterior
+                </Button>
+                <Button variant="ghost" colorScheme="purple" onClick={() => paginate(currentPage + 1)} isDisabled={indexOfLastProduct >= totalProducts}>
+                    Siguiente
+                </Button>
+            </Box>
+        </Card>
     );
 };
 

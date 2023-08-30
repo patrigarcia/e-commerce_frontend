@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { Box, Button, FormControl, FormLabel, Input, Text, VStack, InputGroup, InputLeftAddon, Select } from "@chakra-ui/react";
+import { Box, Button, FormControl, FormLabel, Input, Text, VStack, InputGroup, InputLeftAddon, Select, Card } from "@chakra-ui/react";
 import apiClient from "../../../api/apiClient";
 import { ProductsContext } from "../../../context/ProductsContext/ProductsState";
 import CategoryList from "../AddCategory/CategoryList";
@@ -62,8 +62,9 @@ const AddProduct = () => {
 
     return (
         <>
-            <Text className="product_title">Agregar un producto</Text>
-            <Box className="product_form" p={5} borderWidth="1px" borderRadius="lg">
+            <Card w="50%" h="fit-content" p="3%" mt="10%" ml="8%">
+                <Text className="product_title">Agregar un producto</Text>
+
                 <form onSubmit={manejarEnvio}>
                     <VStack align="start">
                         <FormControl>
@@ -73,28 +74,28 @@ const AddProduct = () => {
                             </div>
 
                             <FormLabel>Nombre</FormLabel>
-                            <Input mb={3} type="text" name="name" placeholder="Nombre del producto" value={ProductInformation.name} onChange={manejarCambioEntrada} />
+                            <Input mb={3} type="text" name="name" placeholder="Nombre del producto" value={ProductInformation.name} isRequired onChange={manejarCambioEntrada} />
                             <FormLabel>Descripción</FormLabel>
-                            <Input mb={3} type="text" name="description" placeholder="Describe el producto" value={ProductInformation.description} onChange={manejarCambioEntrada} />
+                            <Input mb={3} type="text" name="description" placeholder="Describe el producto" isRequired value={ProductInformation.description} onChange={manejarCambioEntrada} />
 
                             <FormLabel>Precio</FormLabel>
                             <InputGroup>
                                 <InputLeftAddon children="€" />
-                                <Input mb={3} type="price" name="price" value={ProductInformation.price} onChange={manejarCambioEntrada} />
+                                <Input mb={3} type="price" name="price" isRequired value={ProductInformation.price} onChange={manejarCambioEntrada} />
                             </InputGroup>
                             <FormLabel>Stock</FormLabel>
-                            <Input mb={3} type="number" name="stock" value={ProductInformation.stock} onChange={manejarCambioEntrada} />
+                            <Input mb={3} type="number" name="stock" isRequired value={ProductInformation.stock} onChange={manejarCambioEntrada} />
 
                             <FormLabel>Imagen</FormLabel>
-                            <Input className="upload_img" type="file" name="image" variant="unstyled" accept=".png, .jpg, .jpeg" onChange={manejarCambioImagen} />
+                            <Input id="fileUpload" colorScheme="red" type="file" name="image" isRequired variant="flushed" accept=".png, .jpg, .jpeg" onChange={manejarCambioImagen} />
                         </FormControl>
 
-                        <Button colorScheme="purple" type="submit">
+                        <Button colorScheme="purple" mt="5%" type="submit">
                             Agregar
                         </Button>
                     </VStack>
                 </form>
-            </Box>
+            </Card>
         </>
     );
 };

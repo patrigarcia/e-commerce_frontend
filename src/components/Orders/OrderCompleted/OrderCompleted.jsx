@@ -1,19 +1,20 @@
 import React from "react";
-import { Flex, Card, Text, Button, Center } from "@chakra-ui/react";
+import { Card, Text, Button, Center, Image } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 
 const OrderCompleted = () => {
     return (
-        <Card w="50%" h="30%" ml="55%" mt="12%">
+        <Card w="80%" h="fit-content" pb="5vh" ml="60%" mt="12vh" mb="50vh">
             <Center>
-                <Text as="b" m="10%" fontSize="1.3em">
+                <Text textAlign="center" mt="10%" fontSize="1.3em">
                     Tu pedido ha sido procesado!
                     <br /> Puedes verlo en tu{" "}
-                    <Link color="purple.500" to="/profile">
+                    <Link to="/profile" style={{ color: "rgba(255, 0, 218, 1)", fontWeight: "bold" }}>
                         perfil
                     </Link>
                 </Text>
             </Center>
+            <Image src="src/assets/orderSuccess.png" w="70%" ml="16%" />
 
             <Center>
                 <Button colorScheme="purple" w="50%">

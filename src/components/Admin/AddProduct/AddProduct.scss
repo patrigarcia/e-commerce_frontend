@@ -1,35 +1,14 @@
-.product_title{
-    font-size: 1.3em;
-    font-weight: 500;
-    margin-top: 6%;
-    padding-left: 6%;
-    margin-bottom: 2%;
-    
-}
-
-.product_form{
-    width: 40%;
-    margin-left: 6%;
-    background-color: white;
-    
-
-    .upload_img{
-        padding-bottom: 4%;
-
-    }
-
-
-input[type="file"]::-webkit-file-upload-button {
-    background-color: #805AD5; 
-    color: #fff; 
-    font-weight:bolder;
-    border: none; 
-    border-radius: 5px; 
-    padding: 10px 15px; 
-    cursor: pointer; 
-    &:hover {
-      background-color: #6B46C1; 
-      
-    }
+input[type=file]::file-selector-button {
+    color: white;
+    border: 1px solid #805ad5;
+    padding: .2em .4em;
+    margin-top: .2em;
+    border-radius: .4em;
+    background-color: #805ad5;
+    transition: 0.5s;
   }
+  
+  input[type=file]::file-selector-button:hover {
+    background-color: #6b46c1;
+    
   }
