@@ -62,7 +62,7 @@ const AddProduct = () => {
 
     return (
         <>
-            <Card w="50%" h="fit-content" p="3%" mt="10%" ml="8%">
+            <Card w="60%" h="fit-content" p="3%" mt="8%" ml="20%">
                 <Text className="product_title">Agregar un producto</Text>
 
                 <form onSubmit={manejarEnvio}>

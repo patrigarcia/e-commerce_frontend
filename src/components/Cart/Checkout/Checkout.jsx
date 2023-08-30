@@ -18,6 +18,7 @@ const Checkout = ({ buyStep, selection, pendingAddress }) => {
         selection();
         if (buyStep === 2) {
             createOrder();
+            clearCart();
         }
     };
 

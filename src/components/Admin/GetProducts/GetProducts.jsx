@@ -46,10 +46,10 @@ const GetProducts = () => {
     };
 
     return (
-        <Card w="80%" p="3%" mt="10%" ml="9%" mb="5%">
+        <Card w="80%" p="3%" mt="8%" ml="10%" mb="5%">
             <Text className="product_title">Lista de Productos</Text>
             <Box>
-                <Table variant="striped" colorScheme="purple">
+                <Table variant="striped" size="sm" colorScheme="purple">
                     <Thead>
                         <Tr>
                             <Th>ID</Th>

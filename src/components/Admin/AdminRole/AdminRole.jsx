@@ -6,7 +6,7 @@ import "./AdminRole.scss";
 const AdminRole = () => {
     const [users, setUsers] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
-    const usersPerPage = 10;
+    const usersPerPage = 8;
 
     useEffect(() => {
         apiClient.get("users/all").then((res) => setUsers(res.data));
@@ -31,7 +31,7 @@ const AdminRole = () => {
     return (
         <>
             <Card w="70%" ml="15%" mt="8%" mb="5%">
-                <Text as="b" ml="3%" p="3%">
+                <Text as="b" ml="3%" p="3%" fontSize="1.2em">
                     Cambiar el rol del usuario
                 </Text>
                 <TableContainer>
@@ -58,7 +58,7 @@ const AdminRole = () => {
                         </Tbody>
                     </Table>
                 </TableContainer>
-                <Box mt={8} display="flex" justifyContent="center">
+                <Box mt="3%" mb="3%" display="flex" justifyContent="center">
                     <Button variant="ghost" colorScheme="purple" onClick={() => paginate(currentPage - 1)} isDisabled={currentPage === 1} mr={1}>
                         Anterior
                     </Button>

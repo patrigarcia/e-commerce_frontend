@@ -18,19 +18,19 @@ function AddCategory() {
     };
 
     return (
-        <Box className="category_box">
-            <Text className="cat_title">Agregar una categoría</Text>
-            <Card p={6}>
-                <FormControl>
-                    <FormLabel>Nueva categoría</FormLabel>
-                    <Input type="text" placeholder="Ingrese el nombre de la categoría que quiere crear" onChange={(e) => setNewCategoryName(e.target.value)} />
-                </FormControl>
-                <Button mt={3} onClick={handleCategoryAddition} colorScheme="purple">
-                    Crear categoría
-                </Button>
-                {error != "" && <p>{error}</p>}
-            </Card>
-        </Box>
+        <Card w="65%" p="3%" mt="8%" ml="17%">
+            <Text as="b" fontSize="1.2em" pb="3%">
+                Agregar una nueva categoría
+            </Text>
+            <FormControl>
+                <FormLabel>Nombre:</FormLabel>
+                <Input type="text" placeholder="Ingrese el nombre de la categoría que quiere crear" onChange={(e) => setNewCategoryName(e.target.value)} />
+            </FormControl>
+            <Button mt={3} onClick={handleCategoryAddition} colorScheme="purple">
+                Crear categoría
+            </Button>
+            {error != "" && <p>{error}</p>}
+        </Card>
     );
 }
 

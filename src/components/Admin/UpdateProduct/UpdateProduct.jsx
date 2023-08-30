@@ -60,7 +60,7 @@ const UpdateProduct = () => {
     };
 
     return (
-        <Card p={5} w="60%" mt="20vh" ml="10vh">
+        <Card p={5} w="60%" mt="8%" ml="20%">
             <Text fontSize="20px" fontWeight="bold" mb={3}>
                 Actualizar un producto
             </Text>

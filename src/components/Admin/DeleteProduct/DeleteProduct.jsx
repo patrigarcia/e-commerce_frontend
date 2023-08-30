@@ -17,7 +17,7 @@ const DeleteProduct = () => {
     };
 
     return (
-        <Card w="60%" p="3%" mt="8%" ml="7%">
+        <Card w="60%" p="3%" mt="8%" ml="20%">
             <Text as="b" fontSize="1.2em" mb="3%">
                 Eliminar Producto por Nombre
             </Text>
