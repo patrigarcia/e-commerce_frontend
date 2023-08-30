@@ -2,6 +2,7 @@ $color1: rgba(255, 0, 218, 0.5);
 $color2: rgba(37, 0, 255, 0.5);
 
 
+
 .profile-container {
     align-items: flex-start;
     width: 100%;
@@ -26,7 +27,6 @@ $color2: rgba(37, 0, 255, 0.5);
 
     & > .user-info-container {
         padding: 4rem;
-        background-color: linear-gradient(to bottom right, $color1, $color2);
 
         & .avatar-image {
             width: 200px; 

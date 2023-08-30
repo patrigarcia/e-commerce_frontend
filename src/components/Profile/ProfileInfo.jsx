@@ -17,7 +17,7 @@ const ProfileInfo = () => {
     };
 
     return (
-        <Flex className="profile-container">
+        <Flex w="400%" className="profile-container">
             <Box as="aside" className="avatar-container">
                 <Box p={4} className="user-info-container">
                     {user && (

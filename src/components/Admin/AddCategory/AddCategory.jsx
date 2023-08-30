@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Box, Button, FormControl, FormLabel, Input, Card, Text } from "@chakra-ui/react";
 import useCategories from "../../../hooks/useCategories";
-import "./AddCategory.scss";
 
 function AddCategory() {
     const { addCategory } = useCategories();

@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Box, Table, Thead, Tbody, Tr, Th, Td, TableContainer, Switch, Text, Flex, Card, Button, Grid } from "@chakra-ui/react";
 import apiClient from "../../../api/apiClient";
-import "./AdminRole.scss";
 
 const AdminRole = () => {
     const [users, setUsers] = useState([]);

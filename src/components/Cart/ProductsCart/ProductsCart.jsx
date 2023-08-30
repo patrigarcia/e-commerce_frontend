@@ -3,7 +3,6 @@ import { ProductsContext } from "../../../context/ProductsContext/ProductsState"
 import { Box, Flex, Image, Text, IconButton, Stack, Grid, Card, VStack, Divider } from "@chakra-ui/react";
 import { getImageURL } from "../../../api/apiClient";
 import { FaTrashAlt } from "react-icons/fa";
-import "./ProductsCart.scss";
 
 const ProductsCart = () => {
     const { cart, clearCart, addCart } = useContext(ProductsContext);

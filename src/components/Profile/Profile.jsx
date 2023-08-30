@@ -1,17 +1,21 @@
-import React, { useState } from "react";
-import { Center, Heading, VStack } from "@chakra-ui/react";
+import React from "react";
+import { Grid, Text, Box, GridItem, Card } from "@chakra-ui/react";
 import ProfileInfo from "./ProfileInfo";
+import UserOrders from "./UserOrder";
 
-const Profile = ({ user, token }) => {
-    const [orders, setOrders] = useState([]);
-
+const Profile = () => {
     return (
-        <>
-            <Heading pt={8} ml={100} as="h2" size="lg">
-                Mi cuenta
-            </Heading>
-            <ProfileInfo />
-        </>
+        <Grid templateColumns={{ base: "1fr", md: "1fr 3fr" }}>
+            <Card mt="10%">
+                <Text as="b" fontSize="1.7em" ml="25%">
+                    Mi cuenta
+                </Text>
+                <ProfileInfo />
+            </Card>
+            <GridItem w="60%">
+                <UserOrders />
+            </GridItem>
+        </Grid>
     );
 };
 
