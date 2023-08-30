@@ -61,7 +61,7 @@ const Checkout = ({ buyStep, selection, pendingAddress }) => {
                     <Flex direction="column" alignItems="flex-end">
                         <HStack w="100%" justifyContent="space-between" flex="1">
                             <Text as="b">Total:</Text>
-                            <Text className="price_checkout" p={2}>
+                            <Text as="b" fontSize="1.6em" p={2}>
                                 ${totalPrice.toFixed(2)}
                             </Text>
                         </HStack>

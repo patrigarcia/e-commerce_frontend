@@ -18,7 +18,9 @@ const ProductsCart = () => {
         <>
             <Flex mb="10vh" mt="8vh">
                 <Card w="75%" ml="15vh" h="fit-content">
-                    <Text className="cart_title">Estos productos están en tu carrito:</Text>
+                    <Text as="b" pl="4%" mt="2%" mb="2%" fontSize="1.3em">
+                        Estos productos están en tu carrito:
+                    </Text>
                     <Divider w="90%" alignSelf="center" />
                     <Stack spacing={3} mt={3}>
                         {cart.length === 0 ? (
@@ -27,7 +29,7 @@ const ProductsCart = () => {
                             cart.map((product) => (
                                 <Box key={product.id} borderRadius="lg" overflow="hidden" boxShadow="md">
                                     <Flex direction={{ base: "column", md: "row" }}>
-                                        <Image className="cart_img" src={getImageURL(product.imagePath)} alt={product.name} objectFit="cover" boxSize={{ base: "100%", md: "150px" }} m="4%" />
+                                        <Image src={getImageURL(product.imagePath)} alt={product.name} objectFit="cover" boxSize={{ base: "100%", md: "150px" }} m="4%" />
                                         <Box p={4} flex="1" position="relative">
                                             <VStack align="flex-start" w="70%">
                                                 <Text fontSize="lg" fontWeight="bold">
