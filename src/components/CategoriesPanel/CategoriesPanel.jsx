@@ -14,10 +14,10 @@ const CategoriesPanel = ({ onSelectCategory, selectedCategoryId }) => {
 
     return (
         <>
-            <Heading fontSize="2xl" marginBottom={5}>
+            <Heading fontSize="2xl" mb={5} ml="7%">
                 Categorías
             </Heading>
-            <List styleType="none">
+            <List ml="7%" styleType="none">
                 <ListItem>
                     <HStack paddingY="10px" paddingX="2px">
                         {isSelectedCategoryNull && <BiSolidGame />}
