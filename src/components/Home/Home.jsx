@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Flex, Box, Divider, Card } from "@chakra-ui/react";
+import { Flex, Box, Divider, Card, HStack } from "@chakra-ui/react";
 import ImageBar from "../ImageBar/ImageBar";
 import Products from "../Products/Products";
 import CategoryHeading from "../CategoryHeading/CategoryHeading";
@@ -12,6 +12,7 @@ const Home = () => {
     const initialFilterState = { categoryId: null, categoryName: null };
     const [filterQuery, setFilterQuery] = useState(initialFilterState);
     const [sortBy, setSortBy] = useState("priceHighToLow");
+    const [sortedProducts, setSortedProducts] = useState([]);
 
     const handleSortChange = (event) => {
         setSortBy(event.target.value);
@@ -32,9 +33,11 @@ const Home = () => {
                         <Box as="main">
                             <CategoryHeading filterQuery={filterQuery} />
                             <Divider mb={4} />
-                            <SortProducts sortBy={sortBy} onSortChange={handleSortChange} />
-                            <FilterProductPrice onPriceFilter={(filteredProducts) => setSortedProducts(filteredProducts)} />
-                            <Products filterQuery={filterQuery} sortedProducts={sortBy} />
+                            <HStack>
+                                <SortProducts sortBy={sortBy} onSortChange={handleSortChange} />
+                                <FilterProductPrice onPriceFilter={(filteredProducts) => setSortedProducts(filteredProducts)} />
+                            </HStack>
+                            <Products filterQuery={filterQuery} sortCriteria={sortBy} />
                         </Box>
                     </Card>
                 </Flex>

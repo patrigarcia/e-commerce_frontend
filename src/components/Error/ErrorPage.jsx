@@ -13,7 +13,7 @@ const ErrorPage = () => {
             {isRouteErrorResponse(error) ? <Image w="100%" src={pageNotFoundImg} /> : <Image w="60%" src={serverErrorImg} />}
             <Text as="b">{isRouteErrorResponse(error) ? pageNotFound : unexpectedError}</Text>
             <Link color="purple" to="/">
-                <Text textAlign="center" as="b" color="purple.600">
+                <Text as="b" color="purple.600">
                     <br /> Return home
                 </Text>
             </Link>

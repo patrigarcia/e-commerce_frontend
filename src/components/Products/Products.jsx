@@ -1,16 +1,17 @@
 import React, { useContext, useEffect, useState } from "react";
 import { ProductsContext } from "../../context/ProductsContext/ProductsState";
-import { Flex, Grid, Image, VStack, Text, Button, Card, Box, useToast } from "@chakra-ui/react";
+import { Flex, Grid, Image, VStack, Text, Button, Card, Box, useToast, HStack } from "@chakra-ui/react";
 import { getImageURL } from "../../api/apiClient";
+import { FaHeart } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import "./Products.scss";
 
-const Products = ({ filterQuery, sortBy }) => {
+const Products = ({ filterQuery, sortCriteria }) => {
     const { getProducts, products, addCart, getProductsByCategory } = useContext(ProductsContext);
     const [currentPage, setCurrentPage] = useState(1);
     const [favorites, setFavorites] = useState([]);
     const [sortedProducts, setsortedProducts] = useState([]);
-    const productsPerPage = 8;
+    const productsPerPage = 10;
     const toast = useToast();
 
     useEffect(() => {
@@ -38,14 +39,14 @@ const Products = ({ filterQuery, sortBy }) => {
         console.log("cambió el ordenamiento");
         let unsortedProducts = products[0]?.Products ? products[0].Products : [...products];
         const sorted = unsortedProducts.sort((a, b) => {
-            if (sortBy === "priceLowToHigh") {
+            if (sortCriteria === "priceLowToHigh") {
                 return a.price - b.price;
             } else {
                 return b.price - a.price;
             }
         });
         setsortedProducts(sorted);
-    }, [products, sortBy]);
+    }, [products, sortCriteria]);
 
     const handleAddToCart = (product) => {
         addCart(product);
@@ -68,49 +69,43 @@ const Products = ({ filterQuery, sortBy }) => {
 
     return (
         <>
-            <Flex flexDirection="column" alignItems="center">
-                <VStack>
-                    <Grid className="product-grid" gap={4}>
-                        {currentProducts.map((product) => (
-                            <Card variant="filled" boxShadow="xl" key={product.id}>
-                                <Box className="product-card">
-                                    <VStack spacing={2} align="start">
-                                        <Box className="image-container">
-                                            <Image className="product-image" src={getImageURL(product.imagePath)} alt={product.name} rounded="lg" />
-                                        </Box>
-                                        <Text className="product-name">{product.name}</Text>
-                                        <Text className="product-description">{product.description}</Text>
-                                        <Text className="product-price" fontWeight="bold">
-                                            {product.price} €
-                                        </Text>
-                                    </VStack>
-                                    <Button className="add-cart-button" colorScheme="purple" onClick={() => handleAddToCart(product)}>
-                                        Añadir al carrito
-                                    </Button>
-                                    <Flex justifyContent="space-between" alignItems="center" width="100%">
-                                        <Link to={`/product/${product.id}`}>
-                                            <Button className="add-cart-button" variant="ghost" colorScheme="purple">
-                                                Ver detalles
-                                            </Button>
-                                        </Link>
-                                        <Button className="favorite-button" variant="ghost" colorScheme={favorites.includes(product.id) ? "red" : "white"} onClick={() => toggleFavorite(product.id)}>
-                                            ❤️
-                                        </Button>
-                                    </Flex>
-                                </Box>
-                            </Card>
-                        ))}
-                    </Grid>
-                    <Box mt={8} display="flex" justifyContent="center">
-                        <Button variant="ghost" colorScheme="purple" onClick={() => paginate(currentPage - 1)} isDisabled={currentPage === 1} mr={1}>
-                            Anterior
+            <Grid gap={2} templateColumns={{ base: "repeat(1, 1fr)", md: "repeat(4, 1fr)", lg: "repeat(5, 1fr)" }}>
+                {currentProducts.map((product) => (
+                    <Card variant="filled" boxShadow="xl" key={product.id}>
+                        <VStack p="5%" align="start">
+                            <Box>
+                                <Image src={getImageURL(product.imagePath)} alt={product.name} rounded="lg" />
+                            </Box>
+                            <Text as="b">{product.name}</Text>
+                            <Text fontSize="0.9em">{product.description}</Text>
+                            <Text as="b" fontSize="1.1em" alignSelf="flex-end" mr="5%">
+                                {product.price} €
+                            </Text>
+                        </VStack>
+                        <Button w="100%" colorScheme="purple" onClick={() => handleAddToCart(product)}>
+                            Añadir al carrito
                         </Button>
-                        <Button variant="ghost" colorScheme="purple" onClick={() => paginate(currentPage + 1)} isDisabled={indexOfLastProduct >= totalProducts}>
-                            Siguiente
-                        </Button>
-                    </Box>
-                </VStack>
-            </Flex>
+                        <HStack>
+                            <Link to={`/product/${product.id}`}>
+                                <Button variant="ghost" colorScheme="purple">
+                                    Ver detalles
+                                </Button>
+                            </Link>
+                            <Button variant="ghost" colorScheme={favorites.includes(product.id) ? "red" : "white"} onClick={() => toggleFavorite(product.id)}>
+                                <FaHeart size={20} />
+                            </Button>
+                        </HStack>
+                    </Card>
+                ))}
+            </Grid>
+            <Box mt={8} display="flex" justifyContent="center">
+                <Button variant="ghost" colorScheme="purple" onClick={() => paginate(currentPage - 1)} isDisabled={currentPage === 1} mr={1}>
+                    Anterior
+                </Button>
+                <Button variant="ghost" colorScheme="purple" onClick={() => paginate(currentPage + 1)} isDisabled={indexOfLastProduct >= totalProducts}>
+                    Siguiente
+                </Button>
+            </Box>
         </>
     );
 };
