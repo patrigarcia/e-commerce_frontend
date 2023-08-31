@@ -1,17 +1,15 @@
 import React, { useContext, useEffect, useState } from "react";
 import { ProductsContext } from "../../context/ProductsContext/ProductsState";
-import { Flex, Grid, Image, VStack, Text, Button, Card, IconButton, Select, Box, useToast } from "@chakra-ui/react";
-import { FaHeart } from "react-icons/fa";
+import { Flex, Grid, Image, VStack, Text, Button, Card, Box, useToast } from "@chakra-ui/react";
 import { getImageURL } from "../../api/apiClient";
 import { Link } from "react-router-dom";
 import "./Products.scss";
 
-const Products = ({ filterQuery }) => {
+const Products = ({ filterQuery, sortBy }) => {
     const { getProducts, products, addCart, getProductsByCategory } = useContext(ProductsContext);
-    const [favorites, setFavorites] = useState({});
-    const [sortedProducts, setSortedProducts] = useState([]);
-    const [sortBy, setSortBy] = useState("priceHighToLow");
     const [currentPage, setCurrentPage] = useState(1);
+    const [favorites, setFavorites] = useState([]);
+    const [sortedProducts, setsortedProducts] = useState([]);
     const productsPerPage = 8;
     const toast = useToast();
 
@@ -20,6 +18,24 @@ const Products = ({ filterQuery }) => {
     }, [filterQuery]);
 
     useEffect(() => {
+        const storedFavorites = localStorage.getItem("favorites");
+        if (storedFavorites) {
+            setFavorites(JSON.parse(storedFavorites));
+        }
+    }, []);
+    useEffect(() => {
+        localStorage.setItem("favorites", JSON.stringify(favorites));
+    }, [favorites]);
+
+    const toggleFavorite = (productId) => {
+        if (favorites.includes(productId)) {
+            setFavorites(favorites.filter((id) => id !== productId));
+        } else {
+            setFavorites([...favorites, productId]);
+        }
+    };
+    useEffect(() => {
+        console.log("cambió el ordenamiento");
         let unsortedProducts = products[0]?.Products ? products[0].Products : [...products];
         const sorted = unsortedProducts.sort((a, b) => {
             if (sortBy === "priceLowToHigh") {
@@ -28,19 +44,9 @@ const Products = ({ filterQuery }) => {
                 return b.price - a.price;
             }
         });
-        setSortedProducts(sorted);
+        setsortedProducts(sorted);
     }, [products, sortBy]);
 
-    const toggleFavorite = (productId) => {
-        setFavorites((prevFavorites) => ({
-            ...prevFavorites,
-            [productId]: !prevFavorites[productId],
-        }));
-    };
-
-    const handleSortChange = (event) => {
-        setSortBy(event.target.value);
-    };
     const handleAddToCart = (product) => {
         addCart(product);
         toast({
@@ -62,10 +68,6 @@ const Products = ({ filterQuery }) => {
 
     return (
         <>
-            <Select value={sortBy} onChange={handleSortChange} width="35%" mb="20px">
-                <option value="priceHighToLow">Ordenar por: Precio (mayor a menor)</option>
-                <option value="priceLowToHigh">Ordenar por: Precio (menor a mayor)</option>
-            </Select>
             <Flex flexDirection="column" alignItems="center">
                 <VStack>
                     <Grid className="product-grid" gap={4}>
@@ -91,12 +93,9 @@ const Products = ({ filterQuery }) => {
                                                 Ver detalles
                                             </Button>
                                         </Link>
-                                        <IconButton
-                                            icon={<FaHeart />}
-                                            colorScheme={favorites[product.id] ? "red" : "gray"}
-                                            onClick={() => toggleFavorite(product.id)}
-                                            aria-label="Marcar como favorito"
-                                        />
+                                        <Button className="favorite-button" variant="ghost" colorScheme={favorites.includes(product.id) ? "red" : "white"} onClick={() => toggleFavorite(product.id)}>
+                                            ❤️
+                                        </Button>
                                     </Flex>
                                 </Box>
                             </Card>
