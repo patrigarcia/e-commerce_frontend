@@ -17,6 +17,7 @@ const UserOrders = () => {
         try {
             const response = await apiClient.get("/users/orders");
             setUserOrders(response.data.orders);
+            console.log(response);
         } catch (error) {
             console.error("Error al obtener los pedidos del usuario:", error);
         }
@@ -30,9 +31,7 @@ const UserOrders = () => {
             <UnorderedList>
                 {userOrders.map((order) => (
                     <ListItem key={order.id} mb={4}>
-                        <Text fontSize="xl" fontWeight="bold">
-                            Código del pedido: {order.id}
-                        </Text>
+                        <Text fontSize="md">Código del pedido: {order.id}</Text>
                         <List ml={4}>
                             {order.products.map((product) => (
                                 <ListItem key={product.productId} mt={2}>

@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { ProductsContext } from "../../context/ProductsContext/ProductsState";
-import { Flex, Grid, Image, VStack, Text, Button, Card, IconButton, Select, Box } from "@chakra-ui/react";
+import { Flex, Grid, Image, VStack, Text, Button, Card, IconButton, Select, Box, useToast } from "@chakra-ui/react";
 import { FaHeart } from "react-icons/fa";
 import { getImageURL } from "../../api/apiClient";
 import { Link } from "react-router-dom";
@@ -13,6 +13,7 @@ const Products = ({ filterQuery }) => {
     const [sortBy, setSortBy] = useState("priceHighToLow");
     const [currentPage, setCurrentPage] = useState(1);
     const productsPerPage = 8;
+    const toast = useToast();
 
     useEffect(() => {
         filterQuery.categoryId ? getProductsByCategory(filterQuery) : getProducts();
@@ -39,6 +40,15 @@ const Products = ({ filterQuery }) => {
 
     const handleSortChange = (event) => {
         setSortBy(event.target.value);
+    };
+    const handleAddToCart = (product) => {
+        addCart(product);
+        toast({
+            title: "Agregado al carrito",
+            status: "success",
+            duration: 2000,
+            isClosable: true,
+        });
     };
 
     const indexOfLastProduct = currentPage * productsPerPage;
@@ -72,7 +82,7 @@ const Products = ({ filterQuery }) => {
                                             {product.price} €
                                         </Text>
                                     </VStack>
-                                    <Button className="add-cart-button" colorScheme="purple" onClick={() => addCart(product)}>
+                                    <Button className="add-cart-button" colorScheme="purple" onClick={() => handleAddToCart(product)}>
                                         Añadir al carrito
                                     </Button>
                                     <Flex justifyContent="space-between" alignItems="center" width="100%">

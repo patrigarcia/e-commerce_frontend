@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { UserContext } from "../../context/UserContext/UserState";
 import { Grid, GridItem, Flex, Box, VStack, Text, Image } from "@chakra-ui/react";
 import { FaUserCircle } from "react-icons/fa";
-import "./Profile.scss";
+import "./ProfileInfo.scss";
 
 const ProfileInfo = () => {
     const { user, setUser } = useContext(UserContext);
@@ -15,22 +15,23 @@ const ProfileInfo = () => {
         setSelectedAvatar(avatarRelativePath + avatar);
         setUser({ ...user, avatar: avatar });
     };
+    console.log(user);
 
     return (
         <Flex w="400%" className="profile-container">
             <Box as="aside" className="avatar-container">
-                <Box p={4} className="user-info-container">
+                <Box className="user-info-container">
                     {user && (
                         <VStack align="center" spacing={4}>
                             <Text className="welcome_text">Bienvenid@, {user.name}!</Text>
-                            {selectedAvatar ? <Image src={selectedAvatar} alt="Selected Avatar" mb={8} borderRadius="full" className="avatar-image" /> : <FaUserCircle className="avatar-icon" />}
+                            {selectedAvatar ? <Image src={selectedAvatar} alt="Selected Avatar" mb={5} borderRadius="full" className="avatar-image" /> : <FaUserCircle className="avatar-icon" />}
                         </VStack>
                     )}
                 </Box>
                 <Text as="b" className="select_text">
                     Selecciona tu avatar:
                 </Text>
-                <Text className="select_text">(Puedes cambiarlo cuando quieras)</Text>
+                <Text ml="5%">(Puedes cambiarlo cuando quieras)</Text>
                 <Grid className="galery" templateColumns={{ base: "repeat(3, 1fr)", sm: "repeat(2, 1fr)", md: "repeat(3, 1fr)" }}>
                     {avatarOptions.map((avatar, index) => (
                         <GridItem key={index}>
