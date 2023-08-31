@@ -29,7 +29,6 @@ const Checkout = ({ buyStep, selection, pendingAddress }) => {
                 status: "pending",
             };
             const response = await apiClient.post("/orders/productId", orderData);
-            console.log("Order created:", response.data);
         } catch (error) {
             console.error("Error creating order:", error);
         }

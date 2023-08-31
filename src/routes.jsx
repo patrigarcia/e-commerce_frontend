@@ -11,7 +11,6 @@ import Profile from "./components/Profile/Profile";
 import SignUp from "./components/SignUp/SignUp";
 import Cart from "./components/Cart/Cart/Cart";
 import ProductPage from "./components/ProductPage/ProductPage";
-import Footer from "./components/Footer/Footer";
 
 const router = createBrowserRouter([
     {
@@ -49,12 +48,6 @@ const router = createBrowserRouter([
                 element: <Admin />,
             },
         ],
-    },
-    {
-        path: "footer",
-        element: <Layout />,
-        errorElement: <ErrorPage />,
-        children: [{ index: true, element: <Footer /> }],
     },
 ]);
 

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Flex, Box, Divider, Card, HStack } from "@chakra-ui/react";
 import ImageBar from "../ImageBar/ImageBar";
 import Products from "../Products/Products";
@@ -9,10 +9,9 @@ import SortProducts from "../Products/SortProducts/SortProducts";
 import "./Home.scss";
 
 const Home = () => {
-    const initialFilterState = { categoryId: null, categoryName: null };
+    const initialFilterState = { categoryId: null, categoryName: null, price: null };
     const [filterQuery, setFilterQuery] = useState(initialFilterState);
     const [sortBy, setSortBy] = useState("priceHighToLow");
-    const [sortedProducts, setSortedProducts] = useState([]);
 
     const handleSortChange = (event) => {
         setSortBy(event.target.value);
@@ -35,7 +34,7 @@ const Home = () => {
                             <Divider mb={4} />
                             <HStack>
                                 <SortProducts sortBy={sortBy} onSortChange={handleSortChange} />
-                                <FilterProductPrice onPriceFilter={(filteredProducts) => setSortedProducts(filteredProducts)} />
+                                <FilterProductPrice onPriceFilter={(price) => setFilterQuery({ ...filterQuery, price: price })} />
                             </HStack>
                             <Products filterQuery={filterQuery} sortCriteria={sortBy} />
                         </Box>

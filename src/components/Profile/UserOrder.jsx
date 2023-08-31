@@ -17,7 +17,6 @@ const UserOrders = () => {
         try {
             const response = await apiClient.get("/users/orders");
             setUserOrders(response.data.orders);
-            console.log(response);
         } catch (error) {
             console.error("Error al obtener los pedidos del usuario:", error);
         }

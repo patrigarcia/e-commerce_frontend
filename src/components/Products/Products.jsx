@@ -10,7 +10,7 @@ const Products = ({ filterQuery, sortCriteria }) => {
     const { getProducts, products, addCart, getProductsByCategory } = useContext(ProductsContext);
     const [currentPage, setCurrentPage] = useState(1);
     const [favorites, setFavorites] = useState([]);
-    const [sortedProducts, setsortedProducts] = useState([]);
+    const [sortedProducts, setSortedProducts] = useState([]);
     const productsPerPage = 10;
     const toast = useToast();
 
@@ -24,6 +24,7 @@ const Products = ({ filterQuery, sortCriteria }) => {
             setFavorites(JSON.parse(storedFavorites));
         }
     }, []);
+
     useEffect(() => {
         localStorage.setItem("favorites", JSON.stringify(favorites));
     }, [favorites]);
@@ -35,8 +36,8 @@ const Products = ({ filterQuery, sortCriteria }) => {
             setFavorites([...favorites, productId]);
         }
     };
+
     useEffect(() => {
-        console.log("cambió el ordenamiento");
         let unsortedProducts = products[0]?.Products ? products[0].Products : [...products];
         const sorted = unsortedProducts.sort((a, b) => {
             if (sortCriteria === "priceLowToHigh") {
@@ -45,8 +46,9 @@ const Products = ({ filterQuery, sortCriteria }) => {
                 return b.price - a.price;
             }
         });
-        setsortedProducts(sorted);
-    }, [products, sortCriteria]);
+        const sortedAndPrice = filterQuery.price ? sorted.filter((p) => p.price === filterQuery.price) : sorted;
+        setSortedProducts(sortedAndPrice);
+    }, [products, sortCriteria, filterQuery]);
 
     const handleAddToCart = (product) => {
         addCart(product);
@@ -91,7 +93,11 @@ const Products = ({ filterQuery, sortCriteria }) => {
                                     Ver detalles
                                 </Button>
                             </Link>
-                            <Button variant="ghost" colorScheme={favorites.includes(product.id) ? "red" : "white"} onClick={() => toggleFavorite(product.id)}>
+                            <Button
+                                variant="ghost"
+                                colorScheme={favorites.includes(product.id) ? "red" : "white"}
+                                onClick={() => toggleFavorite(product.id)}
+                            >
                                 <FaHeart size={20} />
                             </Button>
                         </HStack>
@@ -102,7 +108,12 @@ const Products = ({ filterQuery, sortCriteria }) => {
                 <Button variant="ghost" colorScheme="purple" onClick={() => paginate(currentPage - 1)} isDisabled={currentPage === 1} mr={1}>
                     Anterior
                 </Button>
-                <Button variant="ghost" colorScheme="purple" onClick={() => paginate(currentPage + 1)} isDisabled={indexOfLastProduct >= totalProducts}>
+                <Button
+                    variant="ghost"
+                    colorScheme="purple"
+                    onClick={() => paginate(currentPage + 1)}
+                    isDisabled={indexOfLastProduct >= totalProducts}
+                >
                     Siguiente
                 </Button>
             </Box>

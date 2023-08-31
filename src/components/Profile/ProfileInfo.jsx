@@ -7,7 +7,17 @@ import "./ProfileInfo.scss";
 const ProfileInfo = () => {
     const { user, setUser } = useContext(UserContext);
     const avatarRelativePath = "src/assets/avatars/";
-    const avatarOptions = ["michael.png", "franklin.png", "trevor.png", "mario.png", "pacman.png", "subzero.png", "chunLi.png", "messi.png", "peach.png"];
+    const avatarOptions = [
+        "michael.png",
+        "franklin.png",
+        "trevor.png",
+        "mario.png",
+        "pacman.png",
+        "subzero.png",
+        "chunLi.png",
+        "messi.png",
+        "peach.png",
+    ];
 
     const [selectedAvatar, setSelectedAvatar] = useState(avatarRelativePath + user.avatar);
 
@@ -15,7 +25,6 @@ const ProfileInfo = () => {
         setSelectedAvatar(avatarRelativePath + avatar);
         setUser({ ...user, avatar: avatar });
     };
-    console.log(user);
 
     return (
         <Flex w="400%" className="profile-container">
@@ -24,7 +33,11 @@ const ProfileInfo = () => {
                     {user && (
                         <VStack align="center" spacing={4}>
                             <Text className="welcome_text">Bienvenid@, {user.name}!</Text>
-                            {selectedAvatar ? <Image src={selectedAvatar} alt="Selected Avatar" mb={5} borderRadius="full" className="avatar-image" /> : <FaUserCircle className="avatar-icon" />}
+                            {selectedAvatar ? (
+                                <Image src={selectedAvatar} alt="Selected Avatar" mb={5} borderRadius="full" className="avatar-image" />
+                            ) : (
+                                <FaUserCircle className="avatar-icon" />
+                            )}
                         </VStack>
                     )}
                 </Box>
