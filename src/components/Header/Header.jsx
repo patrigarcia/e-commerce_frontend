@@ -1,8 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Flex, Image, Input, IconButton, Text, Menu, MenuButton, MenuList, MenuItem, useBreakpointValue, Spacer, HStack, Divider, Badge } from "@chakra-ui/react";
-import { HamburgerIcon } from "@chakra-ui/icons";
-import { FaUser, FaShoppingCart, FaSearch, FaUserCog } from "react-icons/fa";
+import { Flex, Image, Text, Spacer, HStack, Divider, Badge, Center } from "@chakra-ui/react";
+import { FaUser, FaShoppingCart, FaUserCog } from "react-icons/fa";
 import logo from "../../assets/logo.png";
 import ColorModeSwitch from "../ColorModeSwitch/ColorModeSwitch";
 import Logout from "../Logout/Logout";
@@ -13,111 +12,70 @@ import "./Header.scss";
 
 const Header = () => {
     const avatarRelativePath = "src/assets/avatars/";
-    const isMobile = useBreakpointValue({ base: true, md: false });
     const { user } = useContext(UserContext);
     const { cart } = useContext(ProductsContext);
 
     return (
-        <Flex className="navbar" alignItems="flex-start" justifyContent="space-between" direction="row">
-            <Flex alignItems="center">
+        <Flex className="navbar">
+            <Flex alignItems="center" justifyContent="flex-start">
                 <Link to="/">
-                    <Image className="logo_navbar" src={logo} boxSize="40px" />
+                    <Image m="4%" mr="4vh" className="logo_navbar" src={logo} boxSize="40px" />
                 </Link>
-                <Spacer />
 
-                {!isMobile && (
-                    <>
-                        <Link className="link" to="/">
-                            INICIO
-                        </Link>
-                        <Link className="link" to="/contact">
-                            CONTACTO
-                        </Link>
-                    </>
-                )}
+                <Link className="link" to="/">
+                    INICIO
+                </Link>
+                <Link className="link" to="/contact">
+                    CONTACTO
+                </Link>
             </Flex>
 
-            {isMobile ? (
-                <Menu>
-                    <MenuButton as={IconButton} aria-label="Options" icon={<HamburgerIcon />} variant="outline" />
-                    <MenuList>
-                        <MenuItem className="item">
-                            {user ? (
-                                <Link to="/profile">
-                                    <HStack>
-                                        <Image src={avatarRelativePath + user.avatar} alt="Avatar" boxSize="50px" borderRadius="50%" />
-                                        <Text>Mi cuenta</Text>
-                                    </HStack>
-                                </Link>
-                            ) : (
-                                <Link to="/login">
-                                    <HStack>
-                                        <FaUser size={30} />
-                                        <Text>Iniciar sesión</Text>
-                                    </HStack>
-                                </Link>
-                            )}
-                        </MenuItem>
-                        <MenuItem className="item">
-                            <Link to="/">Inicio</Link>
-                        </MenuItem>
-                        <MenuItem className="item">
-                            <Link to="/contact">Contacto</Link>
-                        </MenuItem>
+            <Flex w="50%" alignItems="center" justifyContent="flex-end">
+                {user ? (
+                    <>
+                        {user.role === "admin" ? (
+                            <Link className="link" to="/admin">
+                                <HStack>
+                                    <FaUserCog size={30} />
+                                </HStack>
+                            </Link>
+                        ) : (
+                            <Link className="link" to="/profile">
+                                <HStack>
+                                    <Image src={avatarRelativePath + user.avatar} alt="Avatar" boxSize="50px" borderRadius="50%" mr="1vh" />
+                                    <Text>Perfil</Text>
+                                </HStack>
+                            </Link>
+                        )}
 
-                        <MenuItem className="item">{user && <Logout />}</MenuItem>
-
-                        <Divider />
-
-                        <MenuItem className="item">
-                            <ColorModeSwitch />
-                        </MenuItem>
-                    </MenuList>
-                </Menu>
-            ) : (
-                <Flex alignItems="center">
-                    <Input placeholder="Buscar..." variant="filled" maxWidth="200px" />
-                    <IconButton aria-label="Buscar" icon={<FaSearch />} variant="ghost" size="md" />
-
-                    {user ? (
-                        <>
-                            {user.role === "admin" ? (
-                                <Link className="link" to="/admin">
-                                    <HStack>
-                                        <FaUserCog size={30} />
-                                    </HStack>
-                                </Link>
-                            ) : (
-                                <Link className="link" to="/profile">
-                                    <HStack>
-                                        <Image src={avatarRelativePath + user.avatar} alt="Avatar" boxSize="50px" borderRadius="50%" />
-                                        <Text>Mi cuenta</Text>
-                                    </HStack>
-                                </Link>
-                            )}
-
-                            <Logout />
-                        </>
-                    ) : (
-                        <Link className="link" to="/login">
-                            <HStack>
-                                <FaUser size={25} />
-                                <Text>Iniciar sesión</Text>
-                            </HStack>
-                        </Link>
-                    )}
-
-                    <Link className="carrito" to="/cart">
+                        <Logout />
+                    </>
+                ) : (
+                    <Link to="/login">
                         <HStack>
-                            <FaShoppingCart size={30} />
-                            <Badge colorScheme="red" borderRadius="full" px="2">
-                                {cart.length}
-                            </Badge>
+                            <FaUser size={25} />
+                            <Spacer />
+                            <Text>Iniciar sesión</Text>
                         </HStack>
                     </Link>
-                    <ColorModeSwitch />
-                </Flex>
-            )}
+                )}
+                <Center ml="8%" height="50px">
+                    <Divider orientation="vertical" />
+                </Center>
+
+                <Link className="carrito" to="/cart">
+                    <HStack>
+                        <FaShoppingCart size={30} />
+                        <Badge colorScheme="red" borderRadius="full" px="2">
+                            {cart.length}
+                        </Badge>
+                    </HStack>
+                </Link>
+                <Center mr="2%" height="50px">
+                    <Divider orientation="vertical" />
+                </Center>
+                <ColorModeSwitch />
+            </Flex>
         </Flex>
     );
 };

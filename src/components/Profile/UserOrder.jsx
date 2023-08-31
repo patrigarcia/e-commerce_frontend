@@ -25,24 +25,28 @@ const UserOrders = () => {
 
     return (
         <Card w="120%" ml="8%" mt="10%" alignSelf="flex-start">
-            <Text as="b" fontSize="1.2em">
+            <Text as="b" ml="5%" mt="5%" fontSize="1.2em">
                 Estos son tus pedidos:
             </Text>
-            <UnorderedList>
-                {userOrders.map((order) => (
-                    <ListItem key={order.id} mb={4}>
-                        <Text fontSize="md">Código del pedido: {order.id}</Text>
-                        <List ml={4}>
-                            {order.products.map((product) => (
-                                <ListItem key={product.productId} mt={2}>
-                                    <Text>Nombre del Producto: {product.productName}</Text>
-                                    <Text>Precio del Producto: {product.productPrice}</Text>
-                                </ListItem>
-                            ))}
-                        </List>
-                    </ListItem>
-                ))}
-            </UnorderedList>
+            <Card p="5%">
+                <UnorderedList>
+                    {userOrders.map((order) => (
+                        <ListItem key={order.id} mb={4}>
+                            <Text as="b" ml="2%" fontSize="1.1em">
+                                Código del pedido: {order.id}
+                            </Text>
+                            <List ml={4}>
+                                {order.products.map((product) => (
+                                    <ListItem key={product.productId} mt={2}>
+                                        <Text as="b">Nombre del Producto:</Text> {product.productName} <br />
+                                        <Text as="b">Precio del Producto:</Text> {product.productPrice}
+                                    </ListItem>
+                                ))}
+                            </List>
+                        </ListItem>
+                    ))}
+                </UnorderedList>
+            </Card>
         </Card>
     );
 };

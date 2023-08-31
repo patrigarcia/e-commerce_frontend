@@ -34,7 +34,7 @@ const FilterProductPrice = ({ onPriceFilter }) => {
     return (
         <Box ml="22%" mb="2%">
             <HStack justifyContent="space-between">
-                <Text w="75%">Busca por precio:</Text>
+                <Text w="80%">Buscar por precio:</Text>
                 <Input type="text" placeholder="Precio €" isRequired value={price} onChange={(e) => setPrice(e.target.value)} />
 
                 <Button colorScheme="purple" w="40%" onClick={handleFilterClick}>
