@@ -42,9 +42,8 @@ const ProfileInfo = () => {
                     )}
                 </Box>
                 <Text as="b" className="select_text">
-                    Selecciona tu avatar:
+                    Selecciona tu nuevo avatar:
                 </Text>
-                <Text ml="5%">(Puedes cambiarlo cuando quieras)</Text>
                 <Grid className="galery" templateColumns={{ base: "repeat(3, 1fr)", sm: "repeat(2, 1fr)", md: "repeat(3, 1fr)" }}>
                     {avatarOptions.map((avatar, index) => (
                         <GridItem key={index}>
@@ -59,6 +58,9 @@ const ProfileInfo = () => {
                         </GridItem>
                     ))}
                 </Grid>
+                <Text ml="5%" as="i">
+                    Puedes cambiarlo cuando quieras.
+                </Text>
             </Box>
         </Flex>
     );
