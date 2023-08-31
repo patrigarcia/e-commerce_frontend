@@ -4,7 +4,7 @@ import { FaFacebook, FaInstagram, FaTwitter, FaLinkedin } from "react-icons/fa";
 
 const Footer = () => {
     return (
-        <Box mt={8} py={6} bg="gray.800" color="white">
+        <Box py={6} bg="gray.800" color="white">
             <Grid templateColumns={{ base: "1fr", md: "1fr 3fr" }} gap={6}>
                 <GridItem>
                     <VStack spacing={2}>
@@ -28,7 +28,7 @@ const Footer = () => {
                 <GridItem>
                     <Center>
                         <Text fontSize="sm" textAlign="center">
-                            Arcade 2023 - Desarrollado por Patricia Gonzalez Garcia © {new Date().getFullYear()}
+                            Arcade © {new Date().getFullYear()} - Desarrollado por Patricia Gonzalez Garcia
                         </Text>
                     </Center>
                 </GridItem>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Contact.scss";
-import { FormControl, FormLabel, Input, Textarea, Button, VStack, useToast, Card, CardBody, Center, Box, Text } from "@chakra-ui/react";
+import { FormControl, FormLabel, Input, Textarea, Button, VStack, useToast, Card, CardBody, Image, Box, Text, Grid, Center } from "@chakra-ui/react";
 import { Form } from "react-router-dom";
 
 const Contact = () => {
@@ -46,15 +46,20 @@ const Contact = () => {
     };
 
     return (
-        <Box className="containerD">
-            <Card className="formCard" maxW="md" mx="auto">
-                <Text className="title">Contacto</Text>
-                <Center style={{ textAlign: "center" }}>
-                    <Text>
-                        Dejanos un mensaje, un representante
-                        <br /> te va a contactar muy pronto!
+        <Grid templateColumns="repeat(2, 1fr)" className="containerD">
+            <Box position="relative">
+                <Image src="src/assets/robot.png" alt="contact_robot" mt="10%" ml="10%" w="75%" />
+                <Center position="absolute" top="10%" left="50%" transform="translate(-50%, -50%)">
+                    <Text as="b" color="white" fontSize="1.4em" textAlign="center">
+                        ¿List@ para conectarte? <br />
+                        ¡Esperamos tu mensaje!
                     </Text>
                 </Center>
+            </Box>
+            <Card w="70%" ml="5%" p="2%">
+                <Text as="b" ml="1%" p="5%" fontSize="1.2em">
+                    Contacto
+                </Text>
 
                 <CardBody>
                     <Form onSubmit={handleSubmit}>
@@ -82,7 +87,7 @@ const Contact = () => {
                     </Form>
                 </CardBody>
             </Card>
-        </Box>
+        </Grid>
     );
 };
 
