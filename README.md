@@ -1,4 +1,4 @@
-# <h1 align="center"><strong>🎮 ARCADE GAMES 🎮</strong></h1>
+# <h1 align="center"><strong>...**-=-**.'.**-=-**.'.**-=-**. 🎮 ARCADE GAMES 🎮 .**-=-**.'.**-=-**.'.**-=-**...</strong></h1>
 
 ## <p align="center">Proyecto de desarrollo</p>
 
@@ -48,7 +48,7 @@ Asegúrate de tener instalado lo siguiente:
 
 ## 💻 Uso
 
-Describe cómo utilizar tu proyecto:
+En la terminal levanta el servidor:
 
 ```bash
 npm run dev
@@ -66,4 +66,4 @@ Todas las contribuciones son bienvenidas. Por favor sigue estos pasos:
 
 ## 📄 Licencia
 
-Este proyecto está bajo la licencia MIT. Consulta el archivo LICENSE para más detalles.
+Este proyecto fue desarrollado por Patricia Gonzalez García en el Bootcamp FullStack de The Bridge. Todos los derechos reservados.
