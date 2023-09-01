@@ -1,4 +1,4 @@
-# <h1 align="center"><strong>...**-=-**.'.**-=-**.'.**-=-**. 🎮 ARCADE GAMES 🎮 .**-=-**.'.**-=-**.'.**-=-**...</strong></h1>
+# <h1 align="center"><strong>...**-=-**.'.**-=-**.' 🎮 ARCADE GAMES 🎮 '.**-=-**.'.**-=-**...</strong></h1>
 
 ## <p align="center">Proyecto de desarrollo</p>
 
