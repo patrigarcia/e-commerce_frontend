@@ -75,11 +75,27 @@ const Products = ({ filterQuery, sortCriteria }) => {
                 {currentProducts.map((product) => (
                     <Card variant="filled" boxShadow="xl" key={product.id}>
                         <VStack p="5%" align="start">
-                            <Box>
-                                <Image src={getImageURL(product.imagePath)} alt={product.name} rounded="lg" />
+                            <Box overflow="hidden">
+                                <Image
+                                    src={getImageURL(product.imagePath)}
+                                    alt={product.name}
+                                    rounded="lg"
+                                    objectFit="cover"
+                                    w="300px"
+                                    h="200px"
+                                    overflow="hidden"
+                                    transition="transform 0.3s ease-in-out"
+                                    _hover={{ transform: "scale(1.1)" }}
+                                />
                             </Box>
-                            <Text as="b">{product.name}</Text>
-                            <Text fontSize="0.9em">{product.description}</Text>
+                            <Text as="b" h="50px" overflow="hidden">
+                                {product.name}
+                            </Text>
+
+                            <Text h="40px" overflow="hidden" fontSize="0.9em">
+                                {product.description}
+                            </Text>
+
                             <Text as="b" fontSize="1.1em" alignSelf="flex-end" mr="5%">
                                 {product.price} €
                             </Text>
@@ -93,11 +109,7 @@ const Products = ({ filterQuery, sortCriteria }) => {
                                     Ver detalles
                                 </Button>
                             </Link>
-                            <Button
-                                variant="ghost"
-                                colorScheme={favorites.includes(product.id) ? "red" : "white"}
-                                onClick={() => toggleFavorite(product.id)}
-                            >
+                            <Button pl="45%" variant="ghost" colorScheme={favorites.includes(product.id) ? "red" : "white"} onClick={() => toggleFavorite(product.id)}>
                                 <FaHeart size={20} />
                             </Button>
                         </HStack>
@@ -108,12 +120,7 @@ const Products = ({ filterQuery, sortCriteria }) => {
                 <Button variant="ghost" colorScheme="purple" onClick={() => paginate(currentPage - 1)} isDisabled={currentPage === 1} mr={1}>
                     Anterior
                 </Button>
-                <Button
-                    variant="ghost"
-                    colorScheme="purple"
-                    onClick={() => paginate(currentPage + 1)}
-                    isDisabled={indexOfLastProduct >= totalProducts}
-                >
+                <Button variant="ghost" colorScheme="purple" onClick={() => paginate(currentPage + 1)} isDisabled={indexOfLastProduct >= totalProducts}>
                     Siguiente
                 </Button>
             </Box>

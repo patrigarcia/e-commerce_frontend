@@ -1,9 +1,7 @@
 import { useContext, useEffect, useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, Form } from "react-router-dom";
 import { UserContext } from "../../context/UserContext/UserState";
-import logo2 from "../../assets/arcade_imago.png";
-import { Box, Button, Card, FormLabel, Input, Link as ChakraLink, Spinner, Center, Flex } from "@chakra-ui/react";
-import "./Login.scss";
+import { Box, Button, Card, FormLabel, Input, Link as ChakraLink, Spinner, Center, Flex, Image, Grid, Text } from "@chakra-ui/react";
 
 const LoginPage = () => {
     const [isLoading, setLoading] = useState(false);
@@ -29,48 +27,45 @@ const LoginPage = () => {
 
     return (
         <>
-            <Box className="logo-container">
-                <Link to="/">
-                    <img className="logo" src={logo2} alt="Logo" />
-                </Link>
-            </Box>
-            <Center className="heading">
-                <h1>Bienvenid@ de nuevo!</h1>
-            </Center>
-            <Box className="form-container">
-                <Card className="card">
-                    <form onSubmit={handleSubmit}>
-                        <Box mb={4}>
-                            <FormLabel className="form-label">Email</FormLabel>
+            <Grid className="container_grid" h="100vh" templateColumns="repeat(2, 1fr)">
+                <Box>
+                    <Link to="/">
+                        <Image w="70%" ml="10%" mt="15%" src="src/assets/login.png" />
+                    </Link>
+                </Box>
+                <Box w="60%">
+                    <Card p="4%" mt="40%">
+                        <Center>
+                            <Text as="b" p="4%" fontSize="1.2em">
+                                Bienvenid@ de nuevo!
+                            </Text>
+                        </Center>
+                        <Form onSubmit={handleSubmit}>
+                            <FormLabel>Email</FormLabel>
                             <Input type="email" placeholder="Enter email" required />
-                        </Box>
 
-                        <Box mb={4}>
-                            <FormLabel className="form-label">Contraseña</FormLabel>
+                            <FormLabel pt="6%">Contraseña</FormLabel>
                             <Input type="password" placeholder="Enter password" required />
-                        </Box>
 
-                        <Flex className="button-container">
-                            <Button type="submit" colorScheme="purple" isLoading={isLoading} loadingText="Iniciando sesión..." width="100%" mb={4}>
+                            <Button type="submit" colorScheme="purple" isLoading={isLoading} loadingText="Iniciando sesión..." width="100%" mt="6%" mb="4%">
                                 {isLoading ? <Spinner size="sm" mr={2} /> : "Iniciar sesión"}
                             </Button>
-                        </Flex>
 
-                        <Box mb={2}>
-                            <span>Aún no tienes cuenta? </span>
-                            <ChakraLink as={Link} to="/signup" className="link">
-                                Regístrate aquí
+                            <Text as="b">Aún no tienes cuenta? </Text>
+                            <ChakraLink as={Link} color="pink.500" to="/signup">
+                                <Text as="b"> Regístrate aquí</Text>
                             </ChakraLink>
-                        </Box>
 
-                        <Box>
-                            <ChakraLink as={Link} to="/" className="link">
-                                O vuelve a Inicio
+                            <ChakraLink as={Link} to="/" color="blue.600">
+                                <Text as="b">
+                                    {" "}
+                                    <br /> O vuelve a Inicio
+                                </Text>
                             </ChakraLink>
-                        </Box>
-                    </form>
-                </Card>
-            </Box>
+                        </Form>
+                    </Card>
+                </Box>
+            </Grid>
         </>
     );
 };

@@ -3,12 +3,12 @@ import { Box, Text, Button, Input, FormControl, FormLabel, Card } from "@chakra-
 import apiClient from "../../../api/apiClient";
 
 const DeleteProduct = () => {
-    const [productName, setProductName] = useState("");
+    const [productId, setProductId] = useState("");
     const [deleteMessage, setDeleteMessage] = useState("");
 
     const handleDelete = async () => {
         try {
-            const response = await apiClient.delete(`/products/${productName}`);
+            const response = await apiClient.delete(`/products/${productId}`);
             setDeleteMessage(response.data.message);
         } catch (error) {
             console.error("Error al eliminar el producto:", error);
@@ -19,11 +19,11 @@ const DeleteProduct = () => {
     return (
         <Card w="60%" p="3%" mt="8%" ml="20%">
             <Text as="b" fontSize="1.2em" mb="3%">
-                Eliminar Producto por Nombre
+                Eliminar Producto por ID
             </Text>
             <FormControl>
-                <FormLabel>Nombre del Producto</FormLabel>
-                <Input mb="3%" type="text" value={productName} onChange={(e) => setProductName(e.target.value)} />
+                <FormLabel>ID del Producto</FormLabel>
+                <Input mb="3%" type="text" value={productId} onChange={(e) => setProductId(e.target.value)} />
             </FormControl>
             <Button colorScheme="red" onClick={handleDelete}>
                 Eliminar

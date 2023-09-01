@@ -1,50 +1,6 @@
+$color1: rgba(255, 0, 218, 1);
+$color2: rgba(37, 0, 255, 1);
 
-.logo-container {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 1rem;
-  }
-  
-  .logo {
-    width: 25rem;
-    margin-top: 1rem;
-  }
-  
-  .heading {
-    text-align: center;
-    margin-top: 1rem;
-    margin-bottom: 2.5rem;
-  }
-  
-  .form-container {
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    height: 100vh;
-  }
-  
-  .card {
-    padding: 2.5rem;
-    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 0.375rem;
-  }
-  
-  .form-label {
-    margin-bottom: 0.5rem;
-  }
-  
-  .button-container {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  
-  .link {
-    margin-bottom: 0.25rem;
-  }
-
-  h1{
-    font-size: 1.5em;
-  }
-  
+.container_grid {
+    background: linear-gradient(to bottom right, $color1, $color2);
+}
