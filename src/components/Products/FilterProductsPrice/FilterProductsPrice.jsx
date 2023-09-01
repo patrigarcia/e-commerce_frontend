@@ -1,5 +1,6 @@
 import { Box, Button, HStack, Input, Text } from "@chakra-ui/react";
-import { useState } from "react";
+import React, { useState } from "react";
+import apiClient from "../../../api/apiClient";
 
 const FilterProductPrice = ({ onPriceFilter }) => {
     const [price, setPrice] = useState("");
@@ -13,14 +14,29 @@ const FilterProductPrice = ({ onPriceFilter }) => {
             }, 3000);
             return;
         }
-        onPriceFilter(price);
+        try {
+            const response = await apiClient.get(`/products/price/${price}`);
+            onPriceFilter(response.data);
+            console.log(response);
+            setErrorMessage("");
+        } catch (error) {
+            if (error.response && error.response.status === 404) {
+                onPriceFilter([]);
+                setTimeout(() => {
+                    setErrorMessage("");
+                }, 3000);
+            } else {
+                setErrorMessage("Hubo un error al obtener los productos por precio");
+            }
+        }
     };
 
     return (
-        <Box ml="22%" mb="2%">
+        <Box ml="40%" mb="2%">
             <HStack justifyContent="space-between">
                 <Text w="80%">Buscar por precio:</Text>
-                <Input type="number" placeholder="Precio €" isRequired value={price} onChange={(e) => setPrice(e.target.value)} />
+                <Input type="text" placeholder="Precio €" isRequired value={price} onChange={(e) => setPrice(e.target.value)} />
+
                 <Button colorScheme="purple" w="40%" onClick={handleFilterClick}>
                     Filtrar
                 </Button>
